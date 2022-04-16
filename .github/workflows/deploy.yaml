@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run tf appply
+      - name: Build & Deploy
         run: |
           npm run build
           aws s3 sync build s3://docs.multy.dev --acl public-read
