@@ -108,7 +108,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Multy.`,
       },
       announcementBar: {
         id: "announcementBar-2", // Increment on change
