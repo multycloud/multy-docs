@@ -26,12 +26,12 @@ const config = {
           // sidebarPath: require.resolve("./sidebars.js"),
           routeBasePath: "/",
           // Please change this to your repo.
-          editUrl: "https://github.com/multycloud/multy",
+          editUrl: "https://github.com/multycloud/multy-docs/tree/main",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl: "https://github.com/multycloud/multy",
+          editUrl: "https://github.com/multycloud/multy-docs/tree/main",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
