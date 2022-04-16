@@ -48,6 +48,7 @@ const config = {
         logo: {
           alt: "Multy Logo",
           src: "img/multy.jpg",
+          href: "https://multy.dev",
         },
         items: [
           {
