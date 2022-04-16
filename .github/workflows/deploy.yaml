@@ -1,0 +1,16 @@
+name: deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tf appply
+        run: |
+          npm run build
+          aws s3 sync build s3://docs.multy.dev --acl public-read
+          aws cloudfront create-invalidation --distribution-id E1NHH3QOUVN4GS --path "/*"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: "eu-west-1"
