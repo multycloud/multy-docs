@@ -65,7 +65,7 @@ The commands above will output some of the parameters that you should store in a
 - `password` - corresponds to the Client Secret
 
 After you create a service principal, you can pass them to Multy in one of the following ways:
-- Add the credentials directly to the azure provider block in Terraform
+- Add the credentials directly to the azure provider block via Terraform variables
 - Export them as env vars:
 ```bash
 export ARM_TENANT_ID=xxxx-xxxx-xxxx-xxxx
@@ -81,7 +81,7 @@ If you're unfamiliar with Terraform, there are a lot of great [tutorials](https:
 Multy provides different resources that can be deployed in any major cloud. 
 Documentation for the different resources is available at via the [terraform provider](https://registry.terraform.io/providers/multycloud/multy/latest/docs).
 
-The following example deploys a simple `virtual_network` in both AWS and Azure:
+The following example deploys a simple `object_storage` resource with a hello world in both AWS and Azure:
 
 ```hcl
 terraform {
@@ -93,8 +93,9 @@ terraform {
 }
 
 provider "multy" {
-  api_key         = "xxx"
-  azure           = {}
+  api_key = "xxx"
+  aws     = {}
+  azure   = {}
 }
 
 variable "clouds" {
@@ -103,14 +104,16 @@ variable "clouds" {
 }
 
 resource "random_string" "suffix" {
-  length           = 6
+  length  = 6
+  special = false
+  upper   = false
 }
 
 resource "multy_object_storage" "obj_storage" {
-  for_each   = var.clouds
-  name       = "multy-test-storage-${random_string.suffix.result}"
-  cloud      = each.key
-  location   = "us_east"
+  for_each = var.clouds
+  name     = "multy-test-storage-${random_string.suffix.result}"
+  cloud    = each.key
+  location = "us_east"
 }
 
 resource "multy_object_storage_object" "public_obj_storage" {

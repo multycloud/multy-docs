@@ -52,17 +52,15 @@ resource "multy_subnet" "subnet" {
   virtual_network_id = multy_virtual_network.vn[each.key].id
 }
 
-multy "virtual_machine" "example_vm" {
+resource "multy_virtual_machine" "vm" {
   for_each = var.clouds
  
   name               = "test_vm"
   size               = "micro"
   operating_system   = "linux"
   subnet_id          = multy_subnet.subnet[each.key].id
-  cloud              = var.cloud
+  cloud              = each.key
   location           = "ireland"
-
-  depends_on = [multy_network_security_group.nsg]
 }
 ```
 
