@@ -28,16 +28,17 @@ const config = {
           // Please change this to your repo.
           editUrl: "https://github.com/multycloud/multy-docs/tree/main",
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl: "https://github.com/multycloud/multy-docs/tree/main",
-        },
+        blog: false,
+        //  {
+        //   showReadingTime: true,
+        //   // Please change this to your repo.
+        //   editUrl: "https://github.com/multycloud/multy-docs/tree/main",
+        // },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
         googleAnalytics: {
-          trackingID: 'G-17N785X11H',
+          trackingID: "UA-226950854-1",
           anonymizeIP: true,
         },
       }),

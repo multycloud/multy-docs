@@ -16,9 +16,9 @@ terraform {
 }
 
 provider "multy" {
-  api_key         = "xxx"
-  aws             = {}
-  azure           = {}
+  api_key = "xxx"
+  aws     = {}
+  azure   = {}
 }
 
 variable "clouds" {
@@ -79,21 +79,22 @@ resource "multy_route_table_association" "rta" {
 resource "multy_virtual_machine" "vm" {
   for_each = var.clouds
   cloud    = each.key
-  location           = "ireland"
+  location = "ireland"
 
   name               = "multy_vm"
   size               = "micro"
   operating_system   = "linux"
   subnet_id          = multy_subnet.subnet[each.key].id
   generate_public_ip = true
-  user_data          = <<EOF
-    #!/bin/bash -xe
-    sudo su;
-    yum update -y && yum install -y httpd.x86_64;
-    systemctl start httpd.service && systemctl enable httpd.service;
-    touch /var/www/html/index.html; 
-    echo "<h1>Hello from Multy on ${each.key}</h1>" > /var/www/html/index.html
-  EOF
+  user_data_base64   = base64encode(<<-EOF
+      #!/bin/bash -xe
+      sudo su;
+      yum update -y && yum install -y httpd.x86_64;
+      systemctl start httpd.service && systemctl enable httpd.service;
+      touch /var/www/html/index.html;
+      echo "<h1>Hello from Multy on ${each.key}</h1>" > /var/www/html/index.html
+    EOF
+  )
 
   depends_on = [multy_network_security_group.nsg]
 }
