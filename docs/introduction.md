@@ -4,6 +4,12 @@ sidebar_position: 1
 
 # Introduction
 
+:::info
+
+Multy is currently in beta and it should be not used for production. Expect frequent breaking changes. 
+
+:::
+
 Multy is an platform that makes it easy to deploy the same infrastructure configuration on different clouds.
 
 While tools such as [Terraform](https://www.terraform.io) are great for allowing users to deploy any resource in any cloud, they require infrastructure teams to know all the necessary providers inside-out.
