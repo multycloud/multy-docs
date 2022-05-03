@@ -19,11 +19,13 @@ resource "multy_virtual_machine" "vm" {
   operating_system   = "linux"
   subnet_id          = multy_subnet.subnet.id
   cloud              = "aws"
-  location           = "ireland"
+  location           = "eu_west_1"
 
+  // highlight-start
   aws = {
     size = "m4.2xlarge"
   }
+  // highlight-end
 }
 ```
 
@@ -31,16 +33,18 @@ In this resource above, we are creating a `multy_virtual_machine` and we want to
 
 You can find the supported passthrough parameters in each respective resources documentation. 
 
-NOTE: While we are also able to go into your AWS console and change the resource directly, this is not advised as it's likely Multy will override these changes in a future deployment. Where possible, these changes should be done through Multy. 
+:::note
+While you can make changes to resources directly through the console, this is not advised Multy will likely override these changes in a future deployment. Where possible, changes should be done through Multy. 
+:::
 
 ### Additional Terraform Configuration
 
-Another way to add more flexibility to your infrastructure configuration is to leverage the Terraform provider from each provider directly in combination with Multy's Terraform. This can be used to fill in the gaps for resources/features that are not yet supported by Multy.
+Another way to add more flexibility to your infrastructure configuration is to leverage the Terraform provider from each provider directly in combination with Multy Terraform. This can be used to fill in the gaps for resources/features that are not yet supported by Multy.
 
 ```hcl
 resource "multy_object_storage" "obj" {
   name       = "example.com"
-  location   = "ireland"
+  location   = "eu_west_1"
   cloud      = "aws"
 }
 

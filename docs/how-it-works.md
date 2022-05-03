@@ -7,11 +7,9 @@ import TabItem from '@theme/TabItem';
 
 # How It Works
 
-Multy works by deploying your infrastructure in your specified cloud provider based on the credentials you provide.
+Multy works by deploying infrastructure in your specified cloud provider based on the credentials you provide. Multy translates its cloud agnostic resources into the respective cloud specific resources. 
 
-Multy translates its cloud agnostic resources into the respective cloud specific resources. 
-
-As an example, let's look at a Multy `virtual_network` resource using the [Multy's Terraform Provider](https://registry.terraform.io/providers/multycloud/multy/latest/docs):
+As an example, let's look at a Multy `virtual_network` resource using the [Multy Terraform Provider](https://registry.terraform.io/providers/multycloud/multy/latest/docs):
 
 ```hcl
 resource "multy_virtual_network" "vn" {

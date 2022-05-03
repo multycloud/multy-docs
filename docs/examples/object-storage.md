@@ -27,7 +27,7 @@ resource "multy_object_storage" "obj_storage" {
   for_each   = var.clouds
   name       = "test-storage-123-multy"
   cloud      = each.key
-  location   = "us_east"
+  location   = "us_east_1"
   versioning = true
 }
 

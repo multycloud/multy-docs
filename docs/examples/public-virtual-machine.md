@@ -32,7 +32,7 @@ resource "multy_virtual_network" "vn" {
 
   name       = "multy_vn"
   cidr_block = "10.0.0.0/16"
-  location   = "ireland"
+  location   = "eu_west_1"
 }
 
 resource "multy_subnet" "subnet" {
@@ -49,7 +49,7 @@ resource "multy_network_security_group" "nsg" {
 
   name               = "multy_nsg"
   virtual_network_id = multy_virtual_network.vn[each.key].id
-  location           = "ireland"
+  location           = "eu_west_1"
   rule {
     protocol   = "tcp"
     priority   = 132
@@ -79,7 +79,7 @@ resource "multy_route_table_association" "rta" {
 resource "multy_virtual_machine" "vm" {
   for_each = var.clouds
   cloud    = each.key
-  location = "ireland"
+  location = "eu_west_1"
 
   name               = "multy_vm"
   size               = "micro"

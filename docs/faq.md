@@ -23,7 +23,6 @@ Some of the use cases where Multy can help:
 - Looking to move clouds to leverage credits (i.e. AWS Accelerate / GCP Credits / Azure Startups)
 - Could operate cheaper by switching cloud providers
 - Want to future-proof infrastructure to be able to easily switch in the future
-
 - Currently using more than one cloud
 - Might need to leverage more than one cloud in the future
 - Cross-cloud disaster recovery (i.e. pilot light, active-active, etc...)
@@ -38,7 +37,7 @@ Some of the use cases where Multy might not be the best fit:
 
 ### I want to use cloud managed resources (i.e. Amazon DynamoDB / Azure Key Vault), is Multy for me?
 
-Multy's goal is to allow you to leverage cloud managed services and remain free to move your infrastructure. Not every resource will be supported, but we aim to support the most popular managed resources such as managed databases, object storage and vault. Let us know what services you would like to be support by creating an Issue on our [public repository](https://github.com/multycloud/multy). 
+The goal with Multy is to allow you to leverage cloud managed services and remain free to move your infrastructure. Not every resource will be supported, but we aim to support the most popular managed resources such as managed databases, object storage and vault. Let us know what services you would like to be support by creating an Issue on our [public repository](https://github.com/multycloud/multy). 
 
 ### What is the long-term vision?
 

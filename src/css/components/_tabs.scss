@@ -1,0 +1,19 @@
+.tabs {
+  border-bottom: 1px solid var(--ifm-table-border-color);
+  color: var(--ifm-font-color-base);
+
+  .tabs__item {
+    font-weight: normal;
+    font-size: 15px;
+    color: var(--ifm-font-color-base);
+    user-select: none;
+
+    &:hover {
+      border-radius: var(--ifm-global-radius) var(--ifm-global-radius) 0 0;
+    }
+
+    &.tabs__item--active {
+      font-weight: 700;
+    }
+  }
+}

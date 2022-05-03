@@ -16,7 +16,7 @@ const config = {
   favicon: "img/favicon.ico",
   organizationName: "multy", // Usually your GitHub org/user name.
   projectName: "multydocs", // Usually your repo name.
-
+  plugins: ["docusaurus-plugin-sass"],
   presets: [
     [
       "classic",
@@ -35,7 +35,12 @@ const config = {
         //   editUrl: "https://github.com/multycloud/multy-docs/tree/main",
         // },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: [
+            require.resolve(
+              "./node_modules/modern-normalize/modern-normalize.css"
+            ),
+            require.resolve("./src/css/custom.scss"),
+          ],
         },
         googleAnalytics: {
           trackingID: "UA-226950854-1",
@@ -105,11 +110,13 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Multy.`,
       },
       announcementBar: {
-        id: "announcementBar-2", // Increment on change
+        id: "announcement-bar", // Increment on change
+        backgroundColor: "#0565ff",
+        textColor: "white",
         content: `⭐️ If you like Multy, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/multycloud/multy">GitHub</a>! ⭐️`,
       },
       prism: {
-        theme: darkCodeTheme,
+        theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
         additionalLanguages: ["hcl", "bash"],
       },

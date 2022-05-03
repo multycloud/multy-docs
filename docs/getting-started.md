@@ -45,7 +45,7 @@ You can pass the credentials to Terraform in one of the following ways:
 - Export the access key and secret through their respective environment variables, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
 - Add the `access_key` and `access_secret` to the Terraform AWS provider block through Terraform variables
 
-You can read how to setup the provider through the terraform [docs](https://registry.terraform.io/providers/multycloud/multy/latest/docs)
+You can read how to setup the provider through the terraform [docs](https://registry.terraform.io/providers/multycloud/multy/latest/docs).
 
 #### Generate Azure credentials
 
@@ -55,7 +55,7 @@ Run the following commands to generate a service principal:
 
 ```bash
 az login
-az ad sp create-for-rbac --role Contributor
+az ad sp multy --role Contributor
 ```
 
 The commands above will output some of the parameters that you should store in a safe place:

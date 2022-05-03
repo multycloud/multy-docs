@@ -41,7 +41,7 @@ resource "multy_virtual_network" "vn" {
 
   name       = "multy_vn"
   cidr_block = "10.0.0.0/16"
-  location   = "ireland"
+  location   = "eu_west_1"
 }
 
 resource "multy_subnet" "subnet" {
@@ -60,7 +60,7 @@ resource "multy_virtual_machine" "vm" {
   operating_system   = "linux"
   subnet_id          = multy_subnet.subnet[each.key].id
   cloud              = each.key
-  location           = "ireland"
+  location           = "eu_west_1"
 }
 ```
 
