@@ -1,20 +1,10 @@
 @use "./components/admonition";
 @use "./components/back-to-top-button";
 @use "./components/code";
-// @use "./components/doc-item";
-// @use "./components/doc-page";
-// @use "./components/doc-sidebar";
 @use "./components/edit-this-page";
 @use "./components/markdown";
-// @use "./components/navbar";
-// @use "./components/navbar-sidebar";
-// @use "./components/pagination";
-// @use "./components/search";
 @use "./components/table";
-// @use "./components/sidebar";
 @use "./components/tabs";
-// @use "./components/theme-toggle";
-// @use "./components/toc";
 
 :root {
   --ifm-background-color: var(--token-primary-bg-c);
