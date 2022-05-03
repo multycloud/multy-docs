@@ -221,3 +221,7 @@ article {
 .theme-doc-breadcrumbs {
   display: none;
 }
+
+.navbar {
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
