@@ -147,3 +147,39 @@ terraform apply   # deploy infrastructure
 ```
 
 After the commands complete, you can look at the outputs or visit your cloud provider's console to verify that everything is as expected.
+
+### 6. Destroy Your Infrastructure
+
+In the same folder, run the following command to destroy all the resources you deployed earlier: 
+
+```bash
+terraform destroy
+```
+
+If you run into any problem, you can use the Multy CLI instead.
+
+<details>
+<summary>Destroy resources with the Multy CLI</summary>
+<div>
+
+Multy provides a CLI for cases where you can't destroy your infrastructure using Terraform.
+To install it, download it from [GitHub](https://github.com/multycloud/multy/releases) or run the following command:
+
+```bash
+curl https://raw.githubusercontent.com/multycloud/multy/main/install.sh | sh
+```
+
+List all your resources by running:
+
+```bash
+multy list --api_key=xxx
+```
+
+You can also remove a resource from Multy. This won't destroy the underlying resources from your cloud provider.
+To remove a resource, run:
+
+```bash
+multy delete resource_id --api_key=xxx
+```
+</div>
+</details>
