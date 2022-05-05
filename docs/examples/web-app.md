@@ -136,8 +136,11 @@ resource "multy_network_security_group" "nsg" {
 resource "multy_virtual_machine" "vm" {
   for_each           = var.clouds
   name               = "web_app_vm"
-  size               = each.key == "azure" ? "large" : "micro" 
-  operating_system   = "linux"
+  size               = each.key == "azure" ? "large" : "micro"
+  image_reference    = {
+    os      = "cent_os"
+    version = "8.2"
+  }
   subnet_id          = multy_subnet.vm_subnet[each.key].id
   generate_public_ip = true
   user_data          = base64encode(templatefile("./${each.key}_init.sh", {

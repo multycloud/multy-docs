@@ -12,7 +12,7 @@ This is the problem that Multy aims to tackle. We created a single interface to 
 
 ### Why not use the cloud specific Terraform providers?
 
-While Terraform and its providers is great for deploying any resoure into any cloud, it puts all the heavy lifting on the infrastructure teams when it comes to understanding each provider and defining the resources. This flexibility can be seen as an advantage, however, when it comes to multi-cloud, this considerably slows down teams that are looking to move fast with deployments. 
+While Terraform and its providers are great for deploying any resource into any cloud, it puts all the heavy lifting on the infrastructure teams when it comes to understanding each provider and defining the resources. This flexibility can be seen as an advantage, however, when it comes to multi-cloud, this considerably slows down teams that are looking to move fast with deployments. 
 
 By abstracting the common resources across major cloud providers, users are able to deploy the same resources on AWS and Azure without any re-writing any infrastructure code.
 

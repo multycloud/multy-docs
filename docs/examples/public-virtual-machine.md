@@ -83,7 +83,10 @@ resource "multy_virtual_machine" "vm" {
 
   name               = "multy_vm"
   size               = "micro"
-  operating_system   = "linux"
+  image_reference    = {
+    os      = "cent_os"
+    version = "8.2"
+  }
   subnet_id          = multy_subnet.subnet[each.key].id
   generate_public_ip = true
   user_data_base64   = base64encode(<<-EOF

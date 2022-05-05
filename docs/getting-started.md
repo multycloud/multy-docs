@@ -17,7 +17,7 @@ In summary, you'll need to complete the following steps:
 
 ### 1. Install Terraform
 
-Terraform is a Infrastructure-as-code tool that provides a declarative way to deploy resources. 
+Terraform is an Infrastructure-as-code tool that provides a declarative way to deploy resources. 
 Multy is available as a Terraform provider, so you'll need to install Terraform to deploy your infrastructure following their [guide](https://learn.hashicorp.com/tutorials/terraform/install-cli). 
 
 ### 2. Create Cloud Provider Account
@@ -37,11 +37,11 @@ You'll also need a Multy API key, which you can get freely by contacting support
 
 #### Generate AWS credentials
 
-You can get an an `access_key` and an `access_secret` through the AWS console following the [docs](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys).
+You can get an `access_key` and an `access_secret` through the AWS console following the [docs](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys).
 
 You can pass the credentials to Terraform in one of the following ways:
 
-- Run `aws configure` and Multy get the credentials automatically
+- Run `aws configure`, which stores the credentials in a file that Multy then reads from
 - Export the access key and secret through their respective environment variables, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
 - Add the `access_key` and `access_secret` to the Terraform AWS provider block through Terraform variables
 
@@ -64,7 +64,7 @@ The commands above will output some of the parameters that you should store in a
 - `tenant` - corresponds to the Tenant ID
 - `password` - corresponds to the Client Secret
 
-After you create a service principal, you can pass them to Multy in one of the following ways:
+After you create a service principal, pass them to Multy in one of the following ways:
 - Add the credentials directly to the azure provider block via Terraform variables
 - Export them as env vars:
 ```bash
@@ -79,7 +79,7 @@ export ARM_CLIENT_SECRET=xxxx-xxxx-xxxx-xxxx
 Terraform uses declarative configuration files to deploy your infrastructure. 
 If you're unfamiliar with Terraform, there are a lot of great [tutorials](https://learn.hashicorp.com/tutorials/terraform/resource?in=terraform/configuration-language) at their website.
 Multy provides different resources that can be deployed in any major cloud. 
-Documentation for the different resources is available at via the [terraform provider](https://registry.terraform.io/providers/multycloud/multy/latest/docs).
+Documentation for the different resources is available via the [Terraform provider](https://registry.terraform.io/providers/multycloud/multy/latest/docs).
 
 The following example deploys a simple `object_storage` resource with a hello world in both AWS and Azure:
 
