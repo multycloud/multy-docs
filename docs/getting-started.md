@@ -159,17 +159,18 @@ terraform destroy
 If you run into any problem, you can use the Multy CLI instead.
 
 <details>
-<summary>Destroy resources with the Multy CLI</summary>
+<summary>Delete resources with the Multy CLI</summary>
 <div>
 
-Multy provides a CLI for cases where you can't destroy your infrastructure using Terraform.
+Multy provides a CLI for cases where you can't destroy your infrastructure using Terraform. The CLI allows you to remove ghost Multy resources that have been deleted on the cloud provider but still exist in the internal Multy state.
+
 To install it, download it from [GitHub](https://github.com/multycloud/multy/releases) or run the following command:
 
 ```bash
 curl https://raw.githubusercontent.com/multycloud/multy/main/install.sh | sh
 ```
 
-List all your resources by running:
+List all your resources by running (or `MULTY_API_KEY` environment variable):
 
 ```bash
 multy list --api_key=xxx
