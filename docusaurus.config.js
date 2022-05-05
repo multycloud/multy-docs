@@ -17,6 +17,9 @@ const config = {
   organizationName: "multy", // Usually your GitHub org/user name.
   projectName: "multydocs", // Usually your repo name.
   plugins: ["docusaurus-plugin-sass"],
+  stylesheets: [
+    "https://fonts.googleapis.com/css2?family=Poppins&display=swap",
+  ],
   presets: [
     [
       "classic",

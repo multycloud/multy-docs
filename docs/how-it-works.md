@@ -15,7 +15,7 @@ As an example, let's look at a Multy `virtual_network` resource using the [Multy
 resource "multy_virtual_network" "vn" {
   name       = "multy_vn"
   cidr_block = "10.0.0.0/16"
-  location   = "uk"
+  location   = "eu_west_2"
   cloud      = "xxx" // (i.e. aws/azure)
 }
 ```

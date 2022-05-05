@@ -113,7 +113,7 @@ resource "multy_object_storage" "obj_storage" {
   for_each = var.clouds
   name     = "multy-test-storage-${random_string.suffix.result}"
   cloud    = each.key
-  location = "us_east"
+  location = "us_east_1"
 }
 
 resource "multy_object_storage_object" "public_obj_storage" {
