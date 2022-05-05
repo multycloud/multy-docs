@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Introduction
 
-Multy is a platform that makes it easy to deploy the same infrastructure configuration on different clouds.
+Multy is an open-source tool that makes it easy to deploy the same infrastructure configuration on different clouds.
 
 While tools such as [Terraform](https://www.terraform.io) are great for allowing users to deploy any resource in any cloud, they require infrastructure teams to know all the necessary providers inside-out.
 

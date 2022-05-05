@@ -72,6 +72,12 @@ const config = {
           },
           // { to: "/blog", label: "Blog", position: "left" },
           {
+            href: "https://discord.gg/rgaKXY4tCZ",
+            className: "header-discord-link",
+            "aria-label": "Discord channel",
+            position: "right",
+          },
+          {
             href: "https://github.com/multycloud/multy",
             className: "header-github-link",
             "aria-label": "GitHub repository",
@@ -111,6 +117,10 @@ const config = {
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Multy.`,
+      },
+      colorMode: {
+        defaultMode: "light",
+        disableSwitch: true,
       },
       announcementBar: {
         id: "announcement-bar", // Increment on change

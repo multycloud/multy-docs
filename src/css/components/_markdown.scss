@@ -208,3 +208,9 @@ code {
   font-size: var(--ifm-code-font-size) !important;
   padding: var(--ifm-code-padding-vertical) var(--ifm-code-padding-horizontal);
 }
+
+details {
+  summary::before {
+    top: 0.25rem !important;
+  }
+}
