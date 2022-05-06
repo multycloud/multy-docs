@@ -4,9 +4,9 @@ sidebar_position: 6
 
 # Overrides
 
-In order to have an abstracted interface between different cloud providers, Multy has to be opinionated during deployments and will make some assumption on how resources should be configured. Multy also supports most of the core services in major cloud providers. While this covers a significant amount of current workloads running in the cloud, certain uses cases will require additional flexibility not covered by the standard Multy resources. 
+In order to have an abstracted interface between different cloud providers, Multy has to be opinionated during deployments and will make some assumptions on how resources should be configured. Multy also supports most of the core services in major cloud providers. While this covers a significant amount of current workloads running in the cloud, certain use cases will require additional flexibility not covered by the standard Multy resources. 
 
-There are multiple ways to add aditional flexibility to your configuration, which we will cover below.
+There are multiple ways to add additional flexibility to your configuration, which we will cover below.
 
 ### Use passthrough parameters
 
@@ -29,12 +29,12 @@ resource "multy_virtual_machine" "vm" {
 }
 ```
 
-In this resource above, we are creating a `multy_virtual_machine` and we want to customise the size of the instance. Instead of following the standard Multy VM sizes, we want to use a very specific instance size. This can be done through the `aws` passthrough parameter that will override the default value of `vm.size`. If we were instead deploy to Azure, the `aws` parameter would be ignored and the VM size `large` would be used instead. 
+In this resource above, we are creating a `multy_virtual_machine` and we want to customise the size of the instance. Instead of following the standard Multy VM sizes, we want to use a very specific instance size. This can be done through the `aws` passthrough parameter that will override the default value of `vm.size`. If we were instead to deploy to Azure, the `aws` parameter would be ignored and the VM size `large` would be used instead. 
 
-You can find the supported passthrough parameters in each respective resources documentation. 
+You can find the supported passthrough parameters in each respective resource documentation. 
 
 :::note
-While you can make changes to resources directly through the console, this is not advised Multy will likely override these changes in a future deployment. Where possible, changes should be done through Multy. 
+While you can make changes to resources directly through the console, this is not advised as Multy will likely override these changes in a future deployment. Where possible, changes should be done through Multy. 
 :::
 
 ### Additional Terraform Configuration
