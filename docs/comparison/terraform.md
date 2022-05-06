@@ -17,7 +17,7 @@ Teams are constantly faced with a tough decision when it comes to infrastructure
 
 ### Why Multy
 
-Multy offers a different approch to this issue by allowing you to use cloud managed services but still have the flexibility needed to move providers if necessary. While Terraform allows you to be multi-cloud, Multy takes it one step further. 
+Multy offers a different approach to this issue by allowing you to use cloud managed services but still have the flexibility needed to move providers if necessary. While Terraform allows you to be multi-cloud, Multy takes it one step further. 
 
 Multy creates a higher level of abstraction where resources have cloud-agnostic parameters that don't change when you are moving clouds.
 

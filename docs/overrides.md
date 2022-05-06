@@ -16,7 +16,10 @@ Multy allows for passthrough parameters to be utilised in certain resources whic
 resource "multy_virtual_machine" "vm" {
   name               = "dev-vm"
   size               = "large"
-  operating_system   = "linux"
+  image_reference = {
+    os      = "ubuntu"
+    version = "20.04"
+  }
   subnet_id          = multy_subnet.subnet.id
   cloud              = "aws"
   location           = "eu_west_1"

@@ -4,15 +4,17 @@ sidebar_position: 8
 
 # Contributing
 
-**Join the Multy Community! We are always looking for feedback and contributors!**
+<h3 style={{textAlign: "center"}}> Join the Multy Community! We are always looking for feedback and contributors! </h3>
 
-Join the discussion on our community [Slack Channel](/)!
+<br/>
 
-Raise any feedback/ideas as a GitHub Issue.
+💬  Join the discussion on our community [Discord Channel](https://discord.gg/rgaKXY4tCZ)!
 
-Star the repository to spread the word!
+💡  Raise any feedback/ideas as a GitHub Issue.
 
-Finally, contribute to the open-source projects!
+⭐️  Star the repository to spread the word!
+
+💻  Finally, contribute to the open-source projects!
 
 ### Open Source
 
@@ -28,7 +30,7 @@ hello@multy.dev!
 [**Multy**](https://github.com/multycloud/multy) - This project is the brains of the tool, where the translation is
 performed and where Multy resource is translated into the specific cloud resources.
 
-[**Multy Terraform Provider**](https://github.com/multycloud/terraform-provider-multy) - Our terraform provider allows you
-to deploy Multy resources through the Terraform tool.
+[**Terraform Provider**](https://github.com/multycloud/terraform-provider-multy) - The Multy terraform provider allows you
+to deploy resources through the Terraform tool.
 
-[**Multy Docs**](https://github.com/multycloud/multy-docs) - This repo is where our docs are located for [docs.multy.dev](https://docs.multy.dev).
+[**Docs**](https://github.com/multycloud/multy-docs) - This repo is where our docs are located for [docs.multy.dev](https://docs.multy.dev).

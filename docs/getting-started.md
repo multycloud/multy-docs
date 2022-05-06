@@ -31,10 +31,11 @@ You can find how to create an account in each of the cloud provider's websites:
 - AWS - https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/
 - Azure - https://azure.microsoft.com/en-gb/free/
 
-### 3. Generate Access Keys
+### 3. Create Access Keys
 
 In order to allow Multy to deploy infrastructure in your cloud account(s), you need to generate credentials and pass them through Terraform.
-You'll also need a Multy API key, which you can get freely by contacting support@multy.dev.
+
+You'll also need a Multy API key, which you can get freely by contacting support@multy.dev. You can pass them to Terraform though the `MULTY_API_KEY` environment variable.
 
 #### Generate AWS credentials
 
@@ -42,9 +43,96 @@ You can get an `access_key` and an `access_secret` through the AWS console follo
 
 You can pass the credentials to Terraform in one of the following ways:
 
-- Run `aws configure`, which stores the credentials in a file that Multy then reads from
-- Export the access key and secret through their respective environment variables, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
-- Add the `access_key` and `access_secret` to the Terraform AWS provider block through Terraform variables
+<details className="clean">
+<summary>Profile Configuration</summary>
+<div>
+
+Run `aws configure`, which stores the credentials in a file that Multy then reads from. 
+
+Access keys can be automatically fetched by Multy from your `profile` configuration.
+
+```bash
+> aws configure
+```
+
+```hcl
+provider multy {
+  aws = {}
+}
+```
+
+</div>
+</details>
+
+<details className="clean">
+<summary>Temporary Session Token</summary>
+<div>
+
+Run `aws configure`, which stores the credentials in a file that Multy then reads from.
+
+Create a temporary session token by running `aws sts get-session-token` and pass the values through environment variables. You can read more about it the [provider docs](https://registry.terraform.io/providers/multycloud/multy/latest/docs).
+
+```bash
+> aws configure
+> aws sts get-session-token
+> export AWS_ACCESS_KEY_ID=#AccessKeyId#
+> export AWS_SECRET_ACCESS_KEY=#SecretAccessKey#
+> export AWS_SESSION_TOKEN=#SessionToken#
+```
+
+```hcl
+provider multy {
+  aws = {}
+}
+```
+
+</div>
+</details>
+
+<details className="clean">
+<summary>Environment Variables</summary>
+<div>
+
+Pass the access keys through environment variables via `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
+
+```bash
+export AWS_ACCESS_KEY_ID=#AccessKeyId#
+export AWS_SECRET_ACCESS_KEY=#SecretAccessKey#
+```
+
+```hcl
+provider multy {
+  aws = {}
+}
+```
+
+</div>
+</details>
+
+<details className="clean">
+<summary>Parameters</summary>
+<div>
+
+Pass keys directly to the provider as a parameter.
+
+```hcl
+provider multy {
+  aws = {
+    access_key_id      = "AWS_ACCESS_KEY_ID"
+    access_key_secret  = "AWS_SECRET_ACCESS_KEY"
+  }
+}
+```
+
+:::warning
+
+This is not a recommended practice as keys could be accidentally be shared 
+
+:::
+
+</div>
+</details>
+
 
 You can read how to setup the provider through the Terraform [docs](https://registry.terraform.io/providers/multycloud/multy/latest/docs).
 
@@ -157,7 +245,7 @@ In the same folder, run the following command to destroy all the resources you d
 terraform destroy
 ```
 
-If you run into any problem, you can use the Multy CLI instead.
+If you start having drift between Multy and the cloud provider, you can use the Multy CLI.
 
 <details>
 <summary>Delete resources with the Multy CLI</summary>

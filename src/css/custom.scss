@@ -245,3 +245,23 @@ article {
 body {
   font-family: "Poppins", "Roboto", Verdana, Arial, sans-serif !important;
 }
+
+.clean {
+  background-color: unset;
+  border: 1px solid lightgray !important;
+  --docusaurus-details-decoration-color: lightgray;
+
+  // div {
+  //   div {
+  //     border-top: 1px solid lightgray !important;
+  //   }
+  // }
+}
+
+.fullsize {
+  display: flex;
+  justify-content: center;
+  img {
+    width: 600px;
+  }
+}
