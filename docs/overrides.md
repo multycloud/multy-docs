@@ -6,7 +6,7 @@ sidebar_position: 6
 
 In order to have an abstracted interface between different cloud providers, Multy has to be opinionated during deployments and will make some assumption on how resources should be configured. Multy also supports most of the core services in major cloud providers. While this covers a significant amount of current workloads running in the cloud, certain uses cases will require additional flexibility not covered by the standard Multy resources. 
 
-There are multiple ways to add aditional flexibility to your configuration, which we will cover below.
+There are multiple ways to add additional flexibility to your configuration, which we will cover below.
 
 ### Use passthrough parameters
 
@@ -16,7 +16,10 @@ Multy allows for passthrough parameters to be utilised in certain resources whic
 resource "multy_virtual_machine" "vm" {
   name               = "dev-vm"
   size               = "large"
-  operating_system   = "linux"
+  image_reference = {
+    os      = "ubuntu"
+    version = "20.04"
+  }
   subnet_id          = multy_subnet.subnet.id
   cloud              = "aws"
   location           = "eu_west_1"

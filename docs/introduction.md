@@ -16,8 +16,11 @@ This is changing with Multy. Instead of writing the same configuration for each 
   <img src="assets/multy-cloud.svg" alt="" width="500" />
 </p> -->
 
+<div className="fullsize">
+
 ![multycloud](assets/multy-cloud.svg)
 
+</div>
 
 :::note
 

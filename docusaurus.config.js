@@ -101,6 +101,10 @@ const config = {
             title: "Community",
             items: [
               {
+                label: "Discord",
+                href: "https://discord.gg/rgaKXY4tCZ",
+              },
+              {
                 label: "Twitter",
                 href: "https://twitter.com/multycloud",
               },
