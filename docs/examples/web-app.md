@@ -8,7 +8,7 @@ This example deploys a three tier web application that is hosted on both AWS and
 
 Resources deployed:
 * Virtual network and 3 public subnets
-* Virtual machine with sample NodeJS app deployed via user_data [scripts](#)
+* Virtual machine with sample NodeJS app deployed via user_data scripts
 * Database deployed on AWS 
 * Secrets stored in vault and used in the init scripts
 

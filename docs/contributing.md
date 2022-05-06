@@ -28,7 +28,7 @@ hello@multy.dev!
 ### Projects
 
 [**Multy**](https://github.com/multycloud/multy) - This project is the brains of the tool, where the translation is
-performed and where Multy resource is translated into the specific cloud resources.
+performed and where Multy resources are translated into the specific cloud resources.
 
 [**Terraform Provider**](https://github.com/multycloud/terraform-provider-multy) - The Multy terraform provider allows you
 to deploy resources through the Terraform tool.

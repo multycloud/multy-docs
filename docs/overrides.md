@@ -32,7 +32,7 @@ resource "multy_virtual_machine" "vm" {
 }
 ```
 
-In this resource above, we are creating a `multy_virtual_machine` and we want to customise the size of the instance. Instead of following the standard Multy VM sizes, we want to use a very specific instance size. This can be done through the `aws` passthrough parameter that will override the default value of `vm.size`. If we were instead to deploy to Azure, the `aws` parameter would be ignored and the VM size `large` would be used instead. 
+In the resource above, we are creating a `multy_virtual_machine` and we want to customise the size of the instance. Instead of following the standard Multy VM sizes, we want to use a very specific instance size. This can be done through the `aws` passthrough parameter that will override the original value of `vm.size`. If we were instead to deploy to Azure, the `aws` parameter would be ignored and the VM size `large` would be used instead. 
 
 You can find the supported passthrough parameters in each respective resource documentation. 
 
@@ -70,4 +70,4 @@ resource "aws_s3_bucket_website_configuration" "docs_bucket" {
 }
 ```
 
-In this example, we have created a `multy_object_storage` in AWS and want to set the S3 Bucket website configuration to define `index.html` as the default document. This is currently not supported as a passthrough parameter. Using Terraform, we can simply use the AWS Provider to create a `aws_s3_bucket_website_configuration` to add the specific resource we need. 
+In this example, we have created a `multy_object_storage` in AWS and want to set the S3 Bucket website configuration to define `index.html` as the default document. This is currently not supported as a passthrough parameter. Using Terraform, we can simply use the AWS Provider to create a `aws_s3_bucket_website_configuration` resource to add the missing functionality. 

@@ -50,6 +50,6 @@ resource "azurerm_virtual_network" "multy_vn" {
 
 Multy also handles the nuances that often happen with two similar resources on different clouds. 
 As an example, the networking of a `virtual_machine` in Azure is open to the world while in AWS, the default behaviour is private. 
-Multy abstracts these nuances by deploying additional services that ensures they have a consistent behaviour. 
-This means a significantly reduced barrier to entry into major cloud providers and the ability leverage major cloud 
+Multy abstracts these nuances by deploying additional resources, ensuring they have a consistent behaviour. 
+This means a significantly reduced barrier to entry into major cloud providers and the ability to leverage major cloud 
 providers without needing to read documentation in depth. 

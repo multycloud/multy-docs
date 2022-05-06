@@ -6,9 +6,11 @@ import TabItem from '@theme/TabItem';
 
 # Multy vs Terraform
 
-[Terraform](https://terraform.io) is the de facto infrastructure as code tool for most teams to deploy their resources. It allows you to use the same interface to deploy resources to most cloud services. 
+[Terraform](https://terraform.io) is the de facto infrastructure as code tool for most teams to deploy their resources. 
+It allows you to use the same interface to deploy resources to most cloud services. 
 
-While this has been great for teams looking to deploy infrastructure to multiple clouds, it places all the burden of designing and writing that infrastructure to the development teams. Simple resources are tied to a specific cloud and cannot be reused when changing providers. Multy was born out of this exact problem.
+While this has been great for teams looking to deploy infrastructure to multiple clouds, it places all the burden of designing and writing that infrastructure in the development teams. 
+Simple resources are tied to a specific cloud and cannot be reused when changing providers. Multy was born out of this exact problem.
 
 Teams are constantly faced with a tough decision when it comes to infrastructure:
 - Prioritise speed and ease-of-use by leveraging cloud managed services getting locked-in to a particular cloud provider 

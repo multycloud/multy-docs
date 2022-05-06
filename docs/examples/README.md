@@ -1,10 +1,10 @@
 # Examples
 
-Let's take a look at a few examples to better understand how multy works. Read our [Getting Started](getting-started) guide for more details
+Let's take a look at a few examples to better understand how multy works. Read our [Getting Started](getting-started) guide for more details.
 
 ### Define Global Config
 
-First we need to choose which clouds we want to deploy to. You can request a free `api_key` by emailing support@multy.dev
+First we need to choose which clouds we want to deploy to. You can request a free `api_key` by emailing support@multy.dev.
 
 ```hcl
 terraform {
@@ -22,12 +22,12 @@ provider "multy" {
 }
 ```
 
-In this provider config, we have declared that we want our infrastructure to be deployed into AWS and Azure with credentials being passed-through environment variables.
+In this provider config, we have declared that we want our infrastructure to be deployed into AWS and Azure with credentials being passed through environment variables.
 
 ### Declare Resources
 
 Now that we have setup the provider, we can start declaring custom resources. Let's start with a simple virtual
-network configuration and subnet.
+machine deployed in a private virtual network.
 
 ```hcl
 variable "clouds" {
@@ -68,13 +68,13 @@ Here we are defining a few common cloud components. A [virtual_network](#) resou
 an address space of `10.0.0.0/16` and a [subnet](#) within that `multy_vn` resource. Finally
 we're defining a [virtual_machine](#) within `multy_subnet`.
 
-The `for_each = var.clouds` means that two resources will be created in each `["aws", "azure"]` with their respective associations between resources.
+The `for_each = var.clouds` means that resources will be created in each cloud (`["aws", "azure"]`) with their respective associations between resources.
 
 ### Run Multy
 
 After following the setup steps in [Getting Started](getting-started), you can deploy the services using the Terraform CLI.
 
-```hcl
+```bash
 terraform init    # download the terraform providers 
 terraform plan    # outputs what would be deployed if configuration is applied
 terraform apply   # deploy infrastructure
