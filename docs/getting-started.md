@@ -31,15 +31,15 @@ You can find how to create an account in each of the cloud provider's websites:
 - AWS - https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/
 - Azure - https://azure.microsoft.com/en-gb/free/
 
-### 3. Create Access Keys
+### 3. Generate Access Keys
 
 In order to allow Multy to deploy infrastructure in your cloud account(s), you need to generate credentials and pass them through Terraform.
 
-You'll also need a Multy API key, which you can get freely by contacting support@multy.dev. You can pass them to Terraform though the `MULTY_API_KEY` environment variable.
+You'll also need a Multy API key, which you can get freely by contacting support@multy.dev. You can pass them to Terraform through the `MULTY_API_KEY` environment variable.
 
 #### Generate AWS credentials
 
-You can get an `access_key` and an `access_secret` through the AWS console following the [docs](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys).
+You can get an `access_key` and `access_secret` through the AWS console following the [docs](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys).
 
 You can pass the credentials to Terraform in one of the following ways:
 
@@ -47,9 +47,9 @@ You can pass the credentials to Terraform in one of the following ways:
 <summary>Profile Configuration</summary>
 <div>
 
-Run `aws configure`, which stores the credentials in a file that Multy then reads from. 
+Run `aws configure`, which stores the credentials in an AWS local profile.
 
-Access keys can be automatically fetched by Multy from your `profile` configuration.
+Access keys are automatically fetched by Multy from your `profile` configuration.
 
 ```bash
 > aws configure
@@ -68,9 +68,9 @@ provider multy {
 <summary>Temporary Session Token</summary>
 <div>
 
-Run `aws configure`, which stores the credentials in a file that Multy then reads from.
+Run `aws configure`, which stores the credentials in an AWS local profile.
 
-Create a temporary session token by running `aws sts get-session-token` and pass the values through environment variables. You can read more about it the [provider docs](https://registry.terraform.io/providers/multycloud/multy/latest/docs).
+Create a temporary session token by running `aws sts get-session-token` and pass the values through environment variables.
 
 ```bash
 > aws configure
@@ -126,7 +126,7 @@ provider multy {
 
 :::warning
 
-This is not a recommended practice as keys could be accidentally be shared 
+This is not a recommended practice as keys could accidentally be shared 
 
 :::
 
@@ -140,6 +140,7 @@ You can read how to setup the provider through the Terraform [docs](https://regi
 
 Multy needs a Service Principal to deploy infrastructure in your behalf. 
 Azure provides [documentation](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli) on how to create a `service_principal` and what roles can be assigned.
+
 Run the following commands to generate a service principal:
 
 ```bash
@@ -154,14 +155,54 @@ The commands above will output some of the parameters that you should store in a
 - `password` - corresponds to the Client Secret
 
 After you create a service principal, pass them to Multy in one of the following ways:
-- Add the credentials directly to the Azure provider block via Terraform variables
-- Export them as env vars:
+
+<details className="clean">
+<summary>Environment Variables</summary>
+<div>
+
+Pass the access keys through environment variables via `ARM_CLIENT_ID`, `ARM_CLIENT_SECRET`, `ARM_SUBSCRIPTION_ID` and `ARM_TENANT_ID`.
+
 ```bash
-export ARM_TENANT_ID=xxxx-xxxx-xxxx-xxxx
-export ARM_SUBSCRIPTION_ID=xxxx-xxxx-xxxx-xxxx
-export ARM_CLIENT_ID=xxxx-xxxx-xxxx-xxxx
-export ARM_CLIENT_SECRET=xxxx-xxxx-xxxx-xxxx
+export ARM_TENANT_ID=#client_id#
+export ARM_SUBSCRIPTION_ID=#client_secret#
+export ARM_CLIENT_ID=#subscription_id#
+export ARM_CLIENT_SECRET=#tenant_id#
 ```
+
+```hcl
+provider multy {
+  azure = {}
+}
+```
+
+</div>
+</details>
+
+<details className="clean">
+<summary>Parameters</summary>
+<div>
+
+Pass keys directly to the provider as a parameter.
+
+```hcl
+provider multy {
+  azure = {
+    client_id       = "ARM_CLIENT_ID"
+    client_secret   = "ARM_CLIENT_SECRET"
+    subscription_id = "ARM_SUBSCRIPTION_ID"
+    tenant_id       = "ARM_TENANT_ID"
+  }
+}
+```
+
+:::warning
+
+This is not a recommended practice as keys could accidentally be shared 
+
+:::
+
+</div>
+</details>
 
 ### 4. Write your infrastructure configuration file
 
@@ -170,7 +211,7 @@ If you're unfamiliar with Terraform, there are a lot of great [tutorials](https:
 Multy provides different resources that can be deployed in any major cloud. 
 Documentation for the different resources is available via the [Terraform provider](https://registry.terraform.io/providers/multycloud/multy/latest/docs).
 
-The following example deploys a simple `object_storage` resource with a hello world in both AWS and Azure:
+The following example deploys a simple `object_storage` resource with a *hello world* in both AWS and Azure:
 
 ```hcl
 terraform {
@@ -235,7 +276,7 @@ terraform plan    # outputs what would be deployed if configuration is applied
 terraform apply   # deploy infrastructure
 ```
 
-After the commands complete, you can look at the outputs or visit your cloud provider's console to verify that everything is as expected.
+Follow the links displayed after the command completes to see the Hello World message from both providers! You can also verify that the resources were deployed by checking each cloud console.
 
 ### 6. Destroy Your Infrastructure
 
@@ -251,7 +292,7 @@ If you start having drift between Multy and the cloud provider, you can use the 
 <summary>Delete resources with the Multy CLI</summary>
 <div>
 
-Multy provides a CLI for cases where you can't destroy your infrastructure using Terraform. The CLI allows you to remove ghost Multy resources that have been deleted on the cloud provider but still exist in the internal Multy state.
+Multy provides a CLI for cases when there is drift between the cloud provider and Multy. The CLI allows you to remove ghost Multy resources that have been deleted on the cloud provider but still exist in the internal Multy state.
 
 To install it, download it from [GitHub](https://github.com/multycloud/multy/releases) or run the following command:
 
@@ -259,14 +300,13 @@ To install it, download it from [GitHub](https://github.com/multycloud/multy/rel
 curl https://raw.githubusercontent.com/multycloud/multy/main/install.sh | sh
 ```
 
-List all your resources by running (or `MULTY_API_KEY` environment variable):
+List all your resources by running (API key can be passed through the `MULTY_API_KEY` environment variable):
 
 ```bash
 multy list --api_key=xxx
 ```
 
-You can also remove a resource from Multy. This won't destroy the underlying resources from your cloud provider.
-To remove a resource, run:
+Run the command below to remove a resource from Multy (this won't destroy the underlying resources from your cloud provider):
 
 ```bash
 multy delete resource_id --api_key=xxx
