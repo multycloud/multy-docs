@@ -6,18 +6,18 @@ import TabItem from '@theme/TabItem';
 
 # Multy vs Terraform
 
-[Terraform](https://terraform.io) is the defacto infrastructure as code tool for most teams to deploy their resources. It allows you to use the same interface to deploy resources most cloud services. 
+[Terraform](https://terraform.io) is the de facto infrastructure as code tool for most teams to deploy their resources. It allows you to use the same interface to deploy resources to most cloud services. 
 
-While this has been great for teams looking to deploy infrastructure to multiple clouds, it places all the burden of designing and writing that infrastructure to the development teams. Simple resources are tied to specific cloud and cannot be reused when changing providers. Multy was born out of this exact problem.
+While this has been great for teams looking to deploy infrastructure to multiple clouds, it places all the burden of designing and writing that infrastructure to the development teams. Simple resources are tied to a specific cloud and cannot be reused when changing providers. Multy was born out of this exact problem.
 
 Teams are constantly faced with a tough decision when it comes to infrastructure:
-- Prioritise speed and ease-of-use by leveraging cloud managed services getting locked-in to cloud 
-- Avoid lock-in by self-hosting open-source alternatives which are time consuming and expensive to run
+- Prioritise speed and ease-of-use by leveraging cloud managed services getting locked-in to a particular cloud provider 
+- Avoid lock-in by self-hosting open-source alternatives which is time consuming and expensive to run
 
 
 ### Why Multy
 
-Multy offers a different approch to this issue, by allowing you to use cloud managed services but still have the flexibility needed to move providers if necessary. While Terraform allows you to be multi-cloud, Multy takes it one step further. 
+Multy offers a different approch to this issue by allowing you to use cloud managed services but still have the flexibility needed to move providers if necessary. While Terraform allows you to be multi-cloud, Multy takes it one step further. 
 
 Multy creates a higher level of abstraction where resources have cloud-agnostic parameters that don't change when you are moving clouds.
 
