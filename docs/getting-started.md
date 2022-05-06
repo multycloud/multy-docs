@@ -14,6 +14,7 @@ In summary, you'll need to complete the following steps:
 3. Generate Access Keys
 4. Write your infrastructure configuration file
 5. Deploy Your Infrastructure
+6. Destroy Your Infrastructure
 
 ### 1. Install Terraform
 
@@ -45,7 +46,7 @@ You can pass the credentials to Terraform in one of the following ways:
 - Export the access key and secret through their respective environment variables, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
 - Add the `access_key` and `access_secret` to the Terraform AWS provider block through Terraform variables
 
-You can read how to setup the provider through the terraform [docs](https://registry.terraform.io/providers/multycloud/multy/latest/docs).
+You can read how to setup the provider through the Terraform [docs](https://registry.terraform.io/providers/multycloud/multy/latest/docs).
 
 #### Generate Azure credentials
 
@@ -65,7 +66,7 @@ The commands above will output some of the parameters that you should store in a
 - `password` - corresponds to the Client Secret
 
 After you create a service principal, pass them to Multy in one of the following ways:
-- Add the credentials directly to the azure provider block via Terraform variables
+- Add the credentials directly to the Azure provider block via Terraform variables
 - Export them as env vars:
 ```bash
 export ARM_TENANT_ID=xxxx-xxxx-xxxx-xxxx
