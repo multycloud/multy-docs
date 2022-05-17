@@ -8,7 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/oceanicNext");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Documentation | Multy",
-  tagline: "Multy is cool",
+  tagline: "",
   url: "https://docs.multy.dev",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -35,12 +35,11 @@ const config = {
           // Please change this to your repo.
           editUrl: "https://github.com/multycloud/multy-docs/tree/main",
         },
-        blog: false,
-        //  {
-        //   showReadingTime: true,
-        //   // Please change this to your repo.
-        //   editUrl: "https://github.com/multycloud/multy-docs/tree/main",
-        // },
+        blog: {
+          showReadingTime: true,
+          // Please change this to your repo.
+          editUrl: "https://github.com/multycloud/multy-docs/tree/main",
+        },
         theme: {
           customCss: [
             require.resolve(
@@ -74,7 +73,7 @@ const config = {
             position: "left",
             label: "Documentation",
           },
-          // { to: "/blog", label: "Blog", position: "left" },
+          { to: "/blog", label: "Blog", position: "left" },
           {
             href: "https://discord.gg/rgaKXY4tCZ",
             className: "header-discord-link",

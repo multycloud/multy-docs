@@ -1,17 +1,17 @@
-endi:
-  name: Endilie Yacop Sucipto
-  title: Maintainer of Docusaurus
-  url: https://github.com/endiliey
-  image_url: https://github.com/endiliey.png
+jcoelho:
+  name: Joao Coelho
+  title: Co-Founder at Multy
+  url: https://www.linkedin.com/in/jo%C3%A3o-coelho-843472a7/
+  image_url: https://github.com/jcoelhoo.png
 
-yangshun:
-  name: Yangshun Tay
-  title: Front End Engineer @ Facebook
-  url: https://github.com/yangshun
-  image_url: https://github.com/yangshun.png
+goncalo:
+  name: Goncalo Rodrigues
+  title: Co-Founder at Multy
+  url: https://www.linkedin.com/in/goncalo-rodrigues/
+  image_url: https://github.com/goncalo-rodrigues.png
 
-slorber:
-  name: Sébastien Lorber
-  title: Docusaurus maintainer
-  url: https://sebastienlorber.com
-  image_url: https://github.com/slorber.png
+dan:
+  name: Daniel Van Den Berghe
+  title: Co-Founder at Multy
+  url: https://www.linkedin.com/in/daniel-van-den-berghe-96a08944/
+  image_url: https://github.com/danvdb18.png
