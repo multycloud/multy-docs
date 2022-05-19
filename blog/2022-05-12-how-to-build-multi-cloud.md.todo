@@ -1,0 +1,43 @@
+---
+slug: how-to-build-multi-cloud
+title: How To Build Multi-Cloud
+authors: [jcoelho]
+tags: [multi-cloud]
+---
+<!-- 
+- why multi-cloud
+  - price
+  - customer requirement
+  - location
+  - DR
+- current choices
+  - build natively on each provider
+  - build on kubernetes & open source projects
+- challenges
+  - terraform is great but
+  - monitoring cross cloud
+  - moving workloads between cloud -->
+
+## Why Multi-Cloud
+
+Multi cloud has long been a contentious topic when it comes to cloud infrastructure. While running on a single cloud is a popular choice, it brings it's own sets of challenges. 
+
+**Cost:** As your application grows, so does cost. The decisions that were made years ago about picking cloud providers and services are now not fit for the requirements. 
+
+**Customer Requirements:** Your initial customer base is likely to grow in ways you're not expecting. While in the early days you are focused on a single market and set of customers, as you scale, supporting new customers presents a different set of challenges. Say you are running on AWS and you are looking to expand into Switzerland. Because of data privacy laws, you would not be able to support those customers. Same goes for other requirements, such as a business only being compliant to partner with companies running on Azure.
+
+**Resilience:** When AWS has an outage, the world notices. When you depend on a single provider, you don't have much say when there
+
+## Current Options
+
+### Build in Native Cloud
+
+### Build on Open Source
+
+### Multy
+
+## Challenges
+
+## Terraform is great but...
+
+### Managing Multi-Cloud

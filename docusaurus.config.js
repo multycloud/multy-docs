@@ -138,7 +138,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ["hcl", "bash"],
+        additionalLanguages: ["hcl", "bash", "protobuf"],
       },
     }),
 };
