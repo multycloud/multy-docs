@@ -119,5 +119,7 @@ At Multy, we are building an open-source infrastructure tool that makes it easy 
 
 If you want to learn more about gRPC, have a look through our repositories and feel free to contribute!
 
+For any questions, talk to us on our community [discord channel](https://discord.gg/rgaKXY4tCZ)!
+
 Website: https://multy.dev <br/>
 GitHub: https://github.com/multycloud
