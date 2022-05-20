@@ -1,6 +1,6 @@
 ---
-slug: why-rest-is-dead
-title: Why REST Is Dead
+slug: grpc-over-rest
+title: Why we chose gRPC over REST for Multy
 authors: [goncalo]
 tags: [grpc, rest, google, api, golang]
 ---
