@@ -115,7 +115,7 @@ All your services will be static typed - you no longer need to be worried about 
 If you're starting to implement a new server and were thinking of using REST, make sure to look at the alternatives.
 Static typing allows you to catch bugs earlier and provides great autocompletion in modern IDEs.
 
-At Multy, we are building an open-source infrastructure tool that makes it easy to deploy any cloud with the same infrastructure code. We are using gRPC in our [Engine](https://github.com/multycloud/multy) because it allows us easily build robust clients in any language. An example of this is our [Terraform provider](https://github.com/multycloud/terraform-provider-multy) that is used to create Multy resources.
+At Multy, we are building an open-source infrastructure tool that makes it easy to deploy any cloud with the same infrastructure code. We are using gRPC in our [Engine](https://github.com/multycloud/multy) because it allows us to easily build robust clients in any language. An example of this is our [Terraform provider](https://github.com/multycloud/terraform-provider-multy) that is used to create Multy resources.
 
 If you want to learn more about gRPC, have a look through our repositories and feel free to contribute!
 
