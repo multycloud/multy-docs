@@ -12,7 +12,7 @@ It provides an easy, simple and clear language to communicate between services, 
 Although, there are many good alternatives and I want to talk about one in particular - gRPC.
 
 From my days as a Software Engineer at Google, I have grown quite fond of gRPC. 
-Google uses it **everywhere**, from communicating between frontend and backend, to communicating with database servers to all kinds of microservices. It the core communication framework that powers everything from the 8.5 billion Google searches per day the internal communication layer between each teams' microservices.
+Google uses it **everywhere**, from communicating between frontend and backend, to communicating with database servers to all kinds of microservices. It's the core communication framework that powers everything from the 8.5 billion Google searches per day the internal communication layer between each teams' microservices.
 
 <div class="text--center">
 
@@ -115,7 +115,7 @@ All your services will be static typed - you no longer need to be worried about 
 If you're starting to implement a new server and were thinking of using REST, make sure to look at the alternatives.
 Static typing allow you catch bugs earlier and provides great autocompletion in modern IDEs.
 
-At Multy, we are building an open-source infrastructure tool that makes it easy to any cloud with the same infrastructure code. We are using gRPC in our [Engine](https://github.com/multycloud/multy) because it allows us easily build robust clients in any language. An example of this is our [Terraform provider](https://github.com/multycloud/terraform-provider-multy) that is used to create Multy resources.
+At Multy, we are building an open-source infrastructure tool that makes it easy to deploy any cloud with the same infrastructure code. We are using gRPC in our [Engine](https://github.com/multycloud/multy) because it allows us easily build robust clients in any language. An example of this is our [Terraform provider](https://github.com/multycloud/terraform-provider-multy) that is used to create Multy resources.
 
 If you want to learn more about gRPC, have a look through our repositories and feel free to contribute!
 
