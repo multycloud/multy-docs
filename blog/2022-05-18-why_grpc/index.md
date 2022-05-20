@@ -5,7 +5,7 @@ authors: [goncalo]
 tags: [grpc, rest, google, api, golang]
 ---
 
-# Why REST Is Dead
+# Why we chose gRPC over REST for Multy
 
 Nowadays, REST is ubiquitous across most kinds of applications. 
 It provides an easy, simple and clear language to communicate between services, usually a frontend and a backend.
