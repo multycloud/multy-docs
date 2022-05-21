@@ -11,7 +11,7 @@ If you want to look at a real world example of gRPC, check the Multy repos:<br/>
 Multy Engine (gRPC server) - [https://github.com/multycloud/multy](https://github.com/multycloud/multy)<br/>
 Multy Terraform Provider (gRPC client) - [https://github.com/multycloud/terraform-provider-multy](https://github.com/multycloud/terraform-provider-multy).
 
-If you want to discuss further or have any questions, join our [discord channel](https://discord.gg/rgaKXY4tCZ)!
+Join the discussion on our [discord channel](https://discord.gg/rgaKXY4tCZ)!
 
 :::
 
@@ -130,7 +130,7 @@ At Multy, we are building an open-source infrastructure tool that makes it easy 
 
 If you want to learn more about gRPC, have a look through our repositories and feel free to contribute!
 
-For any questions, talk to us on our community [discord channel](https://discord.gg/rgaKXY4tCZ)!
+For any questions, join us on the [Multy discord channel](https://discord.gg/rgaKXY4tCZ)!
 
 Website: https://multy.dev <br/>
 GitHub: https://github.com/multycloud
