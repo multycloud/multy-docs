@@ -47,7 +47,7 @@ Open source tools have been increasing significantly in popularity because of th
 
 Cloud providers offer managed kubernetes clusters, so you can let them do a lot of the heavy-lifting when it comes to scalability and management. You have some degree of lock-in, but by using Kubernetes, the price of migration decreases when compared to other managed compute solutions offered by cloud providers. 
 
-The challenge that remains then is where you choose to run the rest of the infrastructure. While you can choose to run your database, storage, caching within the cluster, you will find that option to be more expensive and painful to maintain. If instead you opt to use managed services, you increase your lock-in through the infrastructure setup and coding layer. 
+The challenge that remains then, is where you choose to run the rest of the infrastructure. While you can choose to run your database, storage, caching within the cluster, you will find that option to be more expensive and painful to maintain. If instead you opt to use managed services, you increase your lock-in through the infrastructure setup and coding layer. 
 
 ### Build with Multy
 
@@ -125,7 +125,7 @@ There are several benefits to this approach:
 
 **Barrier to entry:** Move faster by not having to go through documentation from several providers and hiring specialists for each cloud. Let Multy abstract the nuances and complexities between providers. 
 
-**Easy cross cloud:** Integrate multiple clouds easily by letting Multy handle the cross-cloud coomplexities.
+**Easy cross cloud:** Integrate multiple clouds easily by letting Multy handle the cross-cloud complexities.
 
 :::note
 

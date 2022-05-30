@@ -4,7 +4,7 @@ Let's take a look at a few examples to better understand how multy works. Read o
 
 ### Define Global Config
 
-First we need to choose which clouds we want to deploy to. You can request a free `api_key` by emailing support@multy.dev.
+First we need to choose which clouds we want to deploy to. You can request a free `api_key` by going on our [website](https://multy.dev).
 
 ```hcl
 terraform {

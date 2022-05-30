@@ -15,7 +15,7 @@ This is the problem that Multy aims to tackle. We created a single interface to 
 
 Multy is available as a free and open-source tool, so you can download it directly from our [Repository](https://github.com/multycloud/multy) and run it locally.
 
-We also offer a managed solution that hosts the server for you. Managed Multy is currently offered as a free service. You can request an API key by contacting us at support@multy.dev.
+We also offer a managed solution that hosts the server for you. Managed Multy is currently offered as a free service. You can request an API key on our [website](https://multy.dev)!
 
 
 ### Why not use the cloud specific Terraform providers?
