@@ -37,17 +37,17 @@ There are a few options to consider when building out your infrastructure. These
 
 There are two main choices when building out infrastructure in a single provider: use managed services, or run the infrastructure yourself. As an example, let's focus on the database layer.
 
-You can easily create a virtual machine in any cloud provider, install your database engine of choice and start storing data. While getting started is easy, soon you'll start running into other challenges. How will the database scale? How can I do cheap backups? How do I set up some read replicas? By building this yourself, most of the responsibility lies on you to manage and maintain the infrastructure. The upside is that you can customise that infrastructure as you wish and are not tied to that cloud provider. 
+You can easily create a virtual machine in any cloud provider, install your database engine of choice and start storing data. While getting started is easy, soon you'll start running into other challenges. How will the database scale? How can I do cheap backups? How do I set up some read replicas? By building this yourself, most of the responsibility lands on you to manage and maintain the infrastructure. The upside is that you can customise that infrastructure as you wish and are not tied to that cloud provider. 
 
-When looking at managed services, in the matter of minutes you can spin up an enterprise grade database with most features developers and devops engineers need without having to re-invent the wheel. You can instantly leverage features out of the box and focus on building the application. While this allows you to get up and running quickly, you are now stuck to that cloud provider and will not easily be able to move off of it.
+When looking at managed services, in a matter of minutes you can spin up an enterprise grade database with most features developers and devops engineers need without having to re-invent the wheel. You can instantly leverage features out of the box and focus on building the application. While this allows you to get up and running quickly, you are now stuck with that cloud provider and will not be able to easily move off of it.
 
 ### Build on Open Source
 
 Open source tools have been increasing significantly in popularity because of their developer focus, portability and infrastructure freedom. Kubernetes has become the *de facto* container orchestration system that is supported by all the major cloud providers. 
 
-Cloud providers offer managed kubernetes clusters, so you can let them to do a lot of the heavy-lifting when it comes to scalability and management. You have some degree of lock-in, but by using Kubernetes, the price of migration decreases when compared to other managed compute solutions offered by cloud providers. 
+Cloud providers offer managed kubernetes clusters, so you can let them do a lot of the heavy-lifting when it comes to scalability and management. You have some degree of lock-in, but by using Kubernetes, the price of migration decreases when compared to other managed compute solutions offered by cloud providers. 
 
-The challenge that remains is where you choose to run the rest of the infrastructure. While you can choose to run your database, storage, caching within the cluster, you will find that option to be more expensive and painful to maintain. If instead you opt to use managed services, you increase your lock-in through the infrastructure setup and coding layer. 
+The challenge that remains then is where you choose to run the rest of the infrastructure. While you can choose to run your database, storage, caching within the cluster, you will find that option to be more expensive and painful to maintain. If instead you opt to use managed services, you increase your lock-in through the infrastructure setup and coding layer. 
 
 ### Build with Multy
 
@@ -117,7 +117,7 @@ resource "azurerm_subnet" "example_subnet" {
  </TabItem>
 </Tabs>
 
-In this example, if you wanted to move this these two resources to `azure` instead, only the `cloud` parameter needs to be changed and the infrastructure will be recreated. 
+In this example, if you wanted to move these two resources to `azure` instead, only the `cloud` parameter needs to be changed and the infrastructure will be recreated. 
 
 There are several benefits to this approach: 
 
@@ -125,7 +125,7 @@ There are several benefits to this approach:
 
 **Barrier to entry:** Move faster by not having to go through documentation from several providers and hiring specialists for each cloud. Let Multy abstract the nuances and complexities between providers. 
 
-**Easy cross cloud:** Integrate multiple clouds easily by letting Multy handle the cross-cloud.
+**Easy cross cloud:** Integrate multiple clouds easily by letting Multy handle the cross-cloud coomplexities.
 
 :::note
 
