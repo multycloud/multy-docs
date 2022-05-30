@@ -1,6 +1,6 @@
 ---
-slug: how-to-build-multi-cloud
-title: How To Build Multi-Cloud
+slug: challenges-of-building-multi-cloud
+title: Challenges of building multi cloud
 authors: [jcoelho]
 tags: [multi-cloud, aws, azure, gpc]
 ---
