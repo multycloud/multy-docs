@@ -1,6 +1,6 @@
 ---
 slug: challenges-of-building-multi-cloud
-title: Challenges of building multi cloud
+title: The Challenges of Building Multi Cloud
 authors: [jcoelho]
 tags: [multi-cloud, aws, azure, gpc, terraform, pulumi]
 ---
@@ -85,6 +85,8 @@ resource "multy_subnet" "example_subnet" {
 }
 ``` 
 
+<small>For more examples, check the <a href="https://docs.multy.dev/examples/" target="_blank"> Multy documentation</a>.</small>
+
  </TabItem>
 
   <TabItem value="aws" label="AWS">
@@ -158,4 +160,4 @@ Open-source GitHub - [https://github.com/multycloud/multy](https://github.com/mu
 
 Multi-cloud is hard. When you're starting out, often times the most important thing is speed, but the decisions you make when getting started can become prohibitively expensive to reverse in the future. Whether because of costs increasing, new customer requirements, incoming legislation or need for a robust disaster recovery plan, the ability to run on any cloud has seen a significant interest. 
 
-At Multy, we are solving these challenges by offering an **open-source tool that makes it easy to run on any cloud**. To learn more about [Multy](https://multy.dev), have a look through our [documentation](https://docs.multy.dev) and join our [open beta](https://multy.dev#beta). Continue the discussion in our [discord channel](https://discord.gg/rgaKXY4tCZ)
+At Multy, we are solving these challenges by offering an **open-source tool that makes it easy to run on any cloud**. To learn more about Multy, have a look through our [documentation](https://docs.multy.dev) and join our [open beta](https://multy.dev#beta). Continue the discussion in our [discord channel](https://discord.gg/rgaKXY4tCZ)!
