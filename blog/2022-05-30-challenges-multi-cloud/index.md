@@ -63,7 +63,7 @@ The challenge that remains, is where you choose to run the rest of the infrastru
 
 ### Build with Multy
 
-[Multy](https://multy.dev) takes a different approach to this issue. It gives you the flexibility to use managed services within each cloud, allowing you to build faster, but allows your infrastructure to remain flexible and move from one provider to another. With Multy, you create a multy resource, specify the input parameters as well as a `cloud` parameter. Multy will then deploy that resource into the selected cloud. 
+[Multy](https://multy.dev?ref=multi-cloud-blog) takes a different approach to this issue. It gives you the flexibility to use managed services within each cloud, allowing you to build faster, but allows your infrastructure to remain flexible and move from one provider to another. With Multy, you create a multy resource, specify the input parameters as well as a `cloud` parameter. Multy will then deploy that resource into the selected cloud. 
 
 Here is an example of a `virtual_network` resource with Terraform:
 
