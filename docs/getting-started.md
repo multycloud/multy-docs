@@ -35,7 +35,7 @@ You can find how to create an account in each of the cloud provider's websites:
 
 In order to allow Multy to deploy infrastructure in your cloud account(s), you need to generate credentials and pass them through Terraform.
 
-You'll also need a Multy API key, which you can get freely by contacting support@multy.dev. You can pass them to Terraform through the `MULTY_API_KEY` environment variable.
+You'll also need a Multy API key, which you can get for free on our [website](https://multy.dev). You can pass them to Terraform through the `MULTY_API_KEY` environment variable.
 
 #### Generate AWS credentials
 

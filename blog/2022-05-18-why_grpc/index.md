@@ -5,15 +5,6 @@ authors: [goncalo]
 tags: [grpc, rest, google, api, golang]
 ---
 
-:::note
-
-If you want to look at a real world example of gRPC, check the Multy repos:<br/>
-Multy Engine (gRPC server) - [https://github.com/multycloud/multy](https://github.com/multycloud/multy)<br/>
-Multy Terraform Provider (gRPC client) - [https://github.com/multycloud/terraform-provider-multy](https://github.com/multycloud/terraform-provider-multy).
-
-Join the discussion on our [discord channel](https://discord.gg/rgaKXY4tCZ)!
-
-:::
 
 
 # Why we chose gRPC over REST for Multy
@@ -32,6 +23,8 @@ Google uses it **everywhere**, from communicating between frontend and backend, 
 </div>
 
 In this blog post, we'll go deeper into what gRPC actually is and what its advantages are over REST.
+
+<!--truncate-->
 
 ### What is gRPC?
 
@@ -134,3 +127,13 @@ For any questions, join us on the [Multy discord channel](https://discord.gg/rga
 
 Website: https://multy.dev <br/>
 GitHub: https://github.com/multycloud
+
+:::note
+
+If you want to look at a real world example of gRPC, check the Multy repos:<br/>
+Multy Engine (gRPC server) - [https://github.com/multycloud/multy](https://github.com/multycloud/multy)<br/>
+Multy Terraform Provider (gRPC client) - [https://github.com/multycloud/terraform-provider-multy](https://github.com/multycloud/terraform-provider-multy).
+
+Join the discussion on our [discord channel](https://discord.gg/rgaKXY4tCZ)!
+
+:::

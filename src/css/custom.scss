@@ -258,6 +258,13 @@ body {
   // }
 }
 
+.cleanHeader::before {
+  display: none;
+}
+.cleanHeader {
+  padding-left: 0rem !important;
+}
+
 .fullsize {
   display: flex;
   justify-content: center;
