@@ -72,16 +72,16 @@ Here is an example of a `virtual_network` resource with Terraform:
 
 ```hcl
 resource "multy_virtual_network" "example_vn" {
-  name       = "test_vm"
+  name       = "example_vn"
   cidr_block = "10.0.0.0/16"
   location   = "eu_west_1"
   cloud      = "aws"
 }
 
 resource "multy_subnet" "example_subnet" {
-  name               = "test_vm"
-  cidr_block         = "10.0.10.0/24"
-  virtual_network_id = multy_virtual_network.vn.id
+  name               = "example_subnet"
+  cidr_block         = "10.0.2.0/24"
+  virtual_network_id = multy_virtual_network.example_vn.id
 }
 ``` 
 
@@ -114,11 +114,11 @@ If building a `virtual_network` on Azure:
 ```hcl
 resource "azurerm_resource_group" "example_rg" {
   name     = "example-rg"
-  location = "northeurope"
+  location = "ukwest"
 }
 
 resource "azurerm_virtual_network" "example_vn" {
-  resource_group_name = azurerm_resource_group.vn-rg.name
+  resource_group_name = azurerm_resource_group.example_rg.name
   name                = "example_vn"
   location            = "ukwest"
   address_space       = ["10.0.0.0/16"]
