@@ -1,16 +1,21 @@
-## Terraform vs Pulumi vs CloudFormation
+---
+slug: iac-comparison
+title: Terraform vs Pulumi vs CloudFormation
+authors: [jcoelho]
+tags: [iac, aws, terraform, pulumi, cloudformation]
+---
 
 ## Overview
 
 When getting started, using an Infrastructure as Code (Iac) tool can seem overkill, and as something that will slowdown development. Building and deploying manually if often the way to go early stage, infrastructure changes constantly and it having to re-write your configuration can be a pointless exercise until you have a better understand of the fundamental pieces of your infrastructure.
 
-However, most infrastructures get to a point where manual deployments and resource definition start actually slowing you down. Manual deployments going wrong, having to create several copies of the same environment or xx.
+However, most infrastructures get to a point where manual deployments and resource definition start actually slowing you down. Manual deployments, having to create several copies of the same environment or having dozens of developers deploying changes to code/infrastructure, these are all things that can lead to mistakes, downtime or even loss of data.
 
 In the this blog post, we'll take a look at the current IaC landscape and the current tools.
 
 ## IaC landscape
 
-There are a lot of different IaC tools out there, solving different sets of challenges.
+There are a lot of different IaC tools out there, solving different sets of challenges. Let's look at some of the most popular alternatives and what makes them stand out.
 
 ### Terraform
 
@@ -67,13 +72,18 @@ Resources:
           Value: example_vn
 ```
 
-## Overview
+## Comparison
 
-|        | Terraform | Pulumi           | CloudFormation  |
-| ------ | --------- | ---------------- | --------------- |
-| micro  | t2.nano   | Standard_B1ls    | tandard_B1ls    |
-| medium | t2.medium | Standard_A2_v2   | tandard_A2_v2   |
-| large  | t2.large  | Standard_D2as_v4 | tandard_D2as_v4 |
+|              | Terraform                                               | Pulumi                                          | CloudFormation                                     |
+| ------------ | ------------------------------------------------------- | ----------------------------------------------- | -------------------------------------------------- |
+| Organisation | Hashicorp                                               | Pulumi                                          | Amazon Web Services                                |
+| Open Source  | Yes                                                     | Yes                                             | No                                                 |
+| Pricing      | Free up to 5 users                                      | Free for 1 users                                | Free                                               |
+| Language     | [Several](https://www.pulumi.com/docs/intro/languages/) | HCL                                             | YAML / JSON                                        |
+| Pros         | Market leader; Deploy to any cloud; Scalable code;      | Familiar coding languages; Deploy to any cloud; | AWS integration                                    |
+| Cons         | HCL can be limiting                                     | Smaller community; Documentation is lacking     | Mostly only supports AWS             |
+| Usability    | Must learn HCL but small barrier to entry               | Familiar programming tools                      | Familiar YAML/JSON but quickly becomes hard to use and maintain|
+| State management | Stored locally (free) or via Terraform Cloud | Stored in cloud account | Stored in AWS Account | 
 
 ## Summary
 
