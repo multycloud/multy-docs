@@ -25,7 +25,7 @@ By maintaining the infrastructure state, it's also able to destroy environments 
 
 Terraform uses a declarative language, Hashicorp Configuration Language (HCL), which is straightforward to learn and use. It's a very readable language that makes configuring new resources simple. They offer easy ways to get started through [Modules](https://registry.terraform.io/browse/modules), encapsulating a common set of resources into a single module. With Terraform, it is also easy to manage larger projects, allowing you to easily reuse files for different environments and purposes.
 
-Here is an example of deploying a virtual network using Terraform:
+Here is an example of deploying an AWS virtual network using Terraform:
 
 ```hcl
 resource "aws_vpc" "example_vn" {
@@ -38,9 +38,9 @@ resource "aws_vpc" "example_vn" {
 
 Similar to Terraform, [Pulumi](https://www.pulumi.com/) also allows you to build and deploy infrastructure into any cloud. Instead of HCL, Pulumi allows you to use common programming languages like Python, Javascript or Golang. This means a lower barrier to entry if you are familiar with those coding languages and the ability to use it alongside the rest of your code base. It also means that you can use common testing and other frameworks as you develop your coding infrastructure. When compared to HCL, operations such as for loops and resource references are much more straightforward.
 
-In terms of community, Pulumi is not quite as popular as Terraform, which also benefits from more extensive documentation. It's also important to note that Terraform is also working on a new product that is very similar to Pulumi's offering called [Cloud Development Kit](https://www.terraform.io/cdktf) (CDK). Though this is still early days, it'll eventually become a strong competitor to Pulumi.
+In terms of community, Pulumi is not quite as popular as Terraform, which also benefits from more extensive documentation. It's also important to note that Terraform is also working on a new product that is very similar to Pulumi's offering called [Cloud Development Kit](https://www.terraform.io/cdktf) (CDK). Though this is still in early days, it'll eventually become a strong competitor to Pulumi.
 
-Here is an example of deploying a virtual network using Pulumi:
+Here is an example of deploying an AWS virtual network using Pulumi:
 
 ```js
 import * as awsx from "@pulumi/awsx";
@@ -55,11 +55,11 @@ const vpc = new awsx.ec2.Vpc("custom", {
 
 CloudFormation is the odd one out compared to Terraform and Pulumi. Out of the three, it's the only one that's built for a single provider, AWS. That comes with its pros and cons.
 
-The obvious downside is that, with CloudFormation, you can mostly only deploy AWS resources. While with [CloudFormation Registry](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry.html) you can now deploy third-party resources, the options are severely limited when compared to a cloud-agnostic infrastructure tool. Other disadvantages with CloudFormation are the fact that it's written in YAML, making it very hard to read and often times leads to having configuration files with thousands of lines. It also means simple functions and resource references becomes hard to easily implement.
+The obvious downside is that, with CloudFormation, you can mostly only deploy AWS resources. While with [CloudFormation Registry](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry.html) you can now deploy third-party resources, the options are severely limited when compared to the other infrastructure tools. Other disadvantages with CloudFormation are the fact that it's written in YAML, making it very hard to read and often times leads to having configuration files with thousands of lines. It also means simple functions and resource references becomes hard to easily implement.
 
 The benefits of CloudFormation are mostly its extensive set of examples and its common use throughout the AWS ecosystem such as [SAM](https://aws.amazon.com/serverless/sam/) and [Landing Zone](https://aws.amazon.com/solutions/implementations/aws-landing-zone/)
 
-Here is an example of deploying a virtual network using CloudFormation:
+Here is an example of deploying an AWS virtual network using CloudFormation:
 
 ```yaml
 Resources:
@@ -78,7 +78,7 @@ Resources:
 |------------------|----------------------------------------------------|---------------------------------------------------------|------------------------------------------------------------------|
 | Organisation     | Hashicorp                                          | Pulumi                                                  | Amazon Web Services                                              |
 | Open Source      | Yes                                                | Yes                                                     | No                                                               |
-| Pricing          | Free up to 5 users                                 | Free for 1 users                                        | Free                                                             |
+| Pricing          | Free up to 5 users                                 | Free for 1 user                                         | Free                                                             |
 | Language         | HCL                                                | [Several](https://www.pulumi.com/docs/intro/languages/) | YAML / JSON                                                      |
 | Pros             | Market leader; Deploy to any cloud; Scalable code; | Familiar coding languages; Deploy to any cloud;         | AWS integration                                                  |
 | Cons             | HCL can be limiting                                | Smaller community; Documentation is lacking             | Mostly only supports AWS                                         |
