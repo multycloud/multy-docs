@@ -10,7 +10,7 @@ This page describes how to install all dependencies needed and deploy a simple c
 In summary, you'll need to complete the following steps:
 
 1. Install Terraform
-2. Create Cloud Provider Account
+2. Setup Cloud Provider Accounts
 3. Generate Access Keys
 4. Write your infrastructure configuration file
 5. Deploy Your Infrastructure
@@ -21,7 +21,7 @@ In summary, you'll need to complete the following steps:
 Terraform is an Infrastructure-as-code tool that provides a declarative way to deploy resources. 
 Multy is available as a Terraform provider, so you'll need to install Terraform to deploy your infrastructure following their [guide](https://learn.hashicorp.com/tutorials/terraform/install-cli). 
 
-### 2. Create Cloud Provider Account
+### 2. Setup Cloud Provider Account
 
 Multy deploys your infrastructure in a major cloud provider. 
 Currently, you can deploy it in AWS or Azure, with Google Cloud coming soon.
@@ -30,6 +30,10 @@ You can find how to create an account in each of the cloud provider's websites:
 
 - AWS - https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/
 - Azure - https://azure.microsoft.com/en-gb/free/
+
+In order to setup the credentials, you should install AWS and Azure CLIs by following the respective guides:
+- AWS - https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+- Azure - https://docs.microsoft.com/en-us/cli/azure/install-azure-cli
 
 ### 3. Generate Access Keys
 
@@ -101,6 +105,7 @@ export AWS_SECRET_ACCESS_KEY=#SecretAccessKey#
 ```
 
 ```hcl
+# main.tf
 provider multy {
   aws = {}
 }
@@ -141,11 +146,11 @@ You can read how to setup the provider through the Terraform [docs](https://regi
 Multy needs a Service Principal to deploy infrastructure in your behalf. 
 Azure provides [documentation](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli) on how to create a `service_principal` and what roles can be assigned.
 
-Run the following commands to generate a service principal:
+Run the following commands to generate a service principal (replacing `$SUBSCRIPTION_ID` with your subscription id):
 
 ```bash
 az login
-az ad sp multy --role Contributor
+az ad sp create-for-rbac --name 'multy' --role Contributor --scopes '/subscriptions/$SUBSCRIPTION_ID'
 ```
 
 The commands above will output some of the parameters that you should store in a safe place:
@@ -163,10 +168,10 @@ After you create a service principal, pass them to Multy in one of the following
 Pass the access keys through environment variables via `ARM_CLIENT_ID`, `ARM_CLIENT_SECRET`, `ARM_SUBSCRIPTION_ID` and `ARM_TENANT_ID`.
 
 ```bash
-export ARM_TENANT_ID=#client_id#
-export ARM_SUBSCRIPTION_ID=#client_secret#
-export ARM_CLIENT_ID=#subscription_id#
-export ARM_CLIENT_SECRET=#tenant_id#
+export ARM_TENANT_ID=#tentant_id#
+export ARM_SUBSCRIPTION_ID=#subscription_id#
+export ARM_CLIENT_ID=#app_id#
+export ARM_CLIENT_SECRET=#password#
 ```
 
 ```hcl
@@ -185,6 +190,7 @@ provider multy {
 Pass keys directly to the provider as a parameter.
 
 ```hcl
+# main.tf
 provider multy {
   azure = {
     client_id       = "ARM_CLIENT_ID"
@@ -250,7 +256,7 @@ resource "multy_object_storage_object" "public_obj_storage" {
   for_each          = var.clouds
   name              = "hello_world"
   object_storage_id = multy_object_storage.obj_storage[each.key].id
-  content           = "<h1>hello world from ${each.key}</h1>"
+  content_base64    = base64encode("<h1>hello world from ${each.key}</h1>")
   content_type      = "text/html"
   acl               = "public_read"
 }
