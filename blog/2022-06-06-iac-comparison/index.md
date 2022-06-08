@@ -57,7 +57,7 @@ CloudFormation is the odd one out compared to Terraform and Pulumi. Out of the t
 
 The obvious downside is that, with CloudFormation, you can mostly only deploy AWS resources. While with [CloudFormation Registry](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry.html) you can now deploy third-party resources, the options are severely limited when compared to the other infrastructure tools. Other disadvantages with CloudFormation are the fact that it's written in YAML, making it very hard to read and often times leads to having configuration files with thousands of lines. It also means simple functions and resource references becomes hard to easily implement.
 
-The benefits of CloudFormation are mostly its extensive set of examples and its common use throughout the AWS ecosystem such as [SAM](https://aws.amazon.com/serverless/sam/) and [Landing Zone](https://aws.amazon.com/solutions/implementations/aws-landing-zone/)
+The benefits of CloudFormation are mostly its extensive set of examples and its common use throughout the AWS ecosystem such as [SAM](https://aws.amazon.com/serverless/sam/) and [Landing Zone](https://aws.amazon.com/solutions/implementations/aws-landing-zone/). CloudFormation has also been working on their own [CDK](https://docs.aws.amazon.com/cdk/v2/guide/home.html) which gets converted into a template and deploy. This presents a much more usable infrastructure framework when compared to YAML/JSON.
 
 Here is an example of deploying an AWS virtual network using CloudFormation:
 
