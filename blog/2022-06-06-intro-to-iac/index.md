@@ -39,7 +39,7 @@ Having your infrastructure in code allows you to write tests and be confident th
 
 ## How IaC tools and Terraform work
 
-A lot of tools have been developed in this space over the last few years. Each major cloud provider develops their own - AWS CloudFormation, Azure Resource Templates, Google Cloud Deployment Manager, etc - and there are some that work for multiple clouds - such as Terraform and Pulumi. The industry leader and the one we use at [Multy](https://multy.dev) is Terraform. 
+A lot of tools have been developed in this space over the last few years. Each major cloud provider develops their own - AWS CloudFormation, Azure Resource Templates, Google Cloud Deployment Manager, etc - and there are some that work for multiple clouds - such as Terraform and Pulumi. The industry leader and the one we use at [Multy](https://multy.dev?ref=intro-iac) is Terraform. 
 
 [Terraform](https://terraform.io/) is an open-source IaC tool that uses a declarative language (HCL) to deploy and manage infrastructure in hundreds of cloud providers, including AWS, Azure and GCP.  In this section we'll go over an high-level overview of how Terraform works and some examples as well.
 
@@ -101,4 +101,4 @@ Running `terraform apply` will execute the plan and ensure that the actual cloud
 
 IaC tools offer a lot of benefits when compared to manually provisioning infrastructure - code can be tested, reviewed and version controlled. A lot of organizations are adopting it so they can minimize risk when changing their infrastructure and to improve collaboration.
 
-At Multy, we’re leveraging the power of IaC tools and taking it one step further. Our goal is to reduce cloud vendor lock-in and make multi-cloud deployments easy. Instead of interacting with different cloud-specific UIs, or duplicating your Terraform configuration, Multy allows you to write a **cloud-agnostic infrastructure that can be deployed anywhere**. If want to learn more, check out our [Getting Started](https://docs.multy.dev/getting-started) guide.
+At [Multy](https://multy.dev?ref=intro-iac), we’re leveraging the power of IaC tools and taking it one step further. Our goal is to reduce cloud vendor lock-in and make multi-cloud deployments easy. Instead of interacting with different cloud-specific UIs, or duplicating your Terraform configuration, Multy allows you to write a **cloud-agnostic infrastructure that can be deployed anywhere**. If want to learn more, check out our [Getting Started](https://docs.multy.dev/getting-started) guide.
