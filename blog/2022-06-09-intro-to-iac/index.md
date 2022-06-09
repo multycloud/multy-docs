@@ -1,3 +1,10 @@
+---
+slug: introduction-to-iac
+title: "Introduction to Infrastructure as Code"
+authors: [goncalo]
+tags: [iac, terraform, cloudformation, cloud, infrastructure]
+---
+
 # Introduction to Infrastructure as Code
 
 Cloud infrastructure has been on the rise for the last decade. As it's adoption grows, so has the complexity of managing infrastructure, becoming more complex and more prone to user mistakes. This led to a new wave of tools in the Infrastructure as Code (IaC) space that aim to tackle this issue by treating your infrastructure as you would any other piece of software. 
