@@ -125,7 +125,7 @@ If you want to learn more about gRPC, have a look through our repositories and f
 
 For any questions, join us on the [Multy discord channel](https://discord.gg/rgaKXY4tCZ)!
 
-Website: https://multy.dev <br/>
+Website: https://multy.dev?ref=grpc <br/>
 GitHub: https://github.com/multycloud
 
 :::note
