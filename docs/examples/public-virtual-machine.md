@@ -82,7 +82,7 @@ resource "multy_virtual_machine" "vm" {
   location = "eu_west_1"
 
   name               = "multy_vm"
-  size               = "micro"
+  size               = "general_micro"
   image_reference    = {
     os      = "cent_os"
     version = "8.2"
