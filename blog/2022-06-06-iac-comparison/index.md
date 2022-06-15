@@ -5,6 +5,14 @@ authors: [jcoelho]
 tags: [iac, aws, terraform, pulumi, cloudformation]
 ---
 
+<head>
+<meta name="twitter:card" content="summary" />
+<meta property="og:url" content="https://docs.multy.dev/blog/challenges-of-building-multi-cloud" />
+<meta property="og:title" content="The Challenges of Multi Cloud" />
+<meta property="og:description" content="The effort of creating infrastructure for each cloud provider still requires significant expertise and time to get right." />
+<meta property="og:image" content="./multi-cloud.png" />
+</head>
+
 ## Overview
 
 When getting started, using an Infrastructure as Code (Iac) tool might seem overkill, and something that will slow down development. Building and deploying manually is often the way to go early stage - infrastructure changes constantly and having to re-write your configuration can be a pointless exercise until you have a better understanding of the fundamental pieces of your infrastructure.
