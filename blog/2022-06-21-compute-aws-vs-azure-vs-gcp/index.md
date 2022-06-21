@@ -7,9 +7,9 @@ tags: [iac, terraform, compute, cloud, infrastructure, aws, gcp, azure]
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# AWS vs GCP vs Azure - Computing resources
+# AWS vs GCP vs Azure - Computing resources - Virtual Machines
 
-In this blog post series, we will be comparing different services in AWS, GCP and Azure. We'll go into some detail in each of the resources and understand the differences between providers, something you need to be aware if you are looking into switching clouds.
+In this blog post series, we will be comparing different services in AWS, GCP and Azure. We'll go into some detail in each of the resources and understand the differences between providers, something you need to be aware if you are looking into switching clouds or building out multi-cloud.
 
 
 There are many computing resources available across all clouds which usually fall into one of these categories:
@@ -88,7 +88,7 @@ When picking a region, you also need to take into account that not all regions o
 
 ## Virtual Machine types
 
-Cloud providers have a very diverse catalog of machines available for use. These have different computing resources, that can be optimized for CPU-intensive, memory-intensive or GPU-intensive workloads. Google cloud, for example, is known for its GPU offering, ideal for machine learning and AI workloads. AWS, on the other hand, has Arm-based custom chips that deliver the best multi-core CPU performance. 
+Cloud providers have a very diverse catalog of machines available for use. These have different computing resources, that can be optimized for CPU-intensive, memory-intensive or GPU-intensive workloads. Google Cloud, for example, is known for its GPU offering, ideal for machine learning and AI workloads. AWS, on the other hand, has Arm-based custom chips that deliver the best multi-core CPU performance. 
 
 At the end of the day, for most applications, the available virtual machine types are very similar, but pricing can be quite different for more specialized CPUs or GPUs. We've built a table that compares AWS and Azure resources [here](https://docs.multy.dev/vm_sizes). 
 
