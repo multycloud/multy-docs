@@ -1,8 +1,8 @@
 ---
 slug: compute-aws-vs-azure-vs-gcp
-title: "AWS vs GCP vs Azure - Computing resources"
+title: "AWS EC2 vs Azure Virtual Machine vs GCP Compute Engine - compute comparison (2022)"
 authors: [goncalo]
-tags: [iac, terraform, compute, cloud, infrastructure, aws, gcp, azure]
+tags: [iac, terraform, compute, cloud, infrastructure, aws, gcp, azure, devops]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,7 +10,9 @@ import TabItem from '@theme/TabItem';
 
 # AWS vs GCP vs Azure - Computing resources - Virtual Machines
 
-In this blog post series, we will be comparing different services in AWS, GCP and Azure. We'll go into detail in each of the resources and understand the differences between providers, something you need to be aware if you are looking into switching clouds.
+In this blog post series, we will be comparing different services in AWS, GCP and Azure. We'll go into detail in each of the resources and understand the differences between providers, something you need to be aware if you are looking into switching clouds. 
+
+Some examples will be given using Terraform, the Infrastructure as Code (IaC) market leader. If you want to know more about different IaC tools and how they compare, check our other blog post - [Terraform vs Pulumi vs CloudFormation](https://docs.multy.dev/blog/iac-comparison).
 
 There are many computing resources available across all clouds which usually fall into one of these categories:
 
@@ -244,17 +246,18 @@ Aside from those, all clouds also offer a local storage which is usually cheaper
 
 ## What we're doing at Multy
 
-As we've seen so far, while most of the features in each cloud are similar, there's a lot of differences that make it hard to switch clouds. This increases your degree of lock-in to your cloud provider. That's why we are building Multy - an open source tool that enables developers to deploy cloud-agnostic infrastructure.
+As we've seen so far, while most of the features in each cloud are similar, there's a lot of differences that make it hard to build for multiple clouds. This increases your degree of lock-in to your cloud provider. That's why we are building Multy - an open source tool that enables developers to deploy cloud-agnostic infrastructure.
 
-With Multy, you specify how your resource configuration and what cloud you want to deploy in, and we handle the nuances of each cloud for you. It's currently available as a Terraform provider. 
+With Multy, you specify your resource configuration and what cloud you want to deploy in, and Multy handles the nuances of each cloud for you. It's currently available as a [Terraform provider](https://registry.terraform.io/providers/multycloud/multy/latest/docs). 
 
 Let's say we want to deploy a virtual machine with the following configuration:
 
 - Ubuntu 20.04 LTS
 - 1 CPU core, 1 GB Ram
 - Ephemeral public IP
-- SSH configured
+- SSH configured with public key `./ssh_key.pub`
 - Located in London
+- Starts an HTTP server with a static webpage
 
 Here's how a Terraform configuration looks like in Multy and in the different cloud providers:
 
@@ -279,13 +282,14 @@ resource "multy_virtual_machine" "vm" {
   public_ssh_key     = file("./ssh_key.pub")
   user_data_base64   = base64encode(<<-EOF
       #!/bin/bash -xe
-      sudo su;
-      apt update -y && apt install -y httpd.x86_64;
-      systemctl start httpd.service && systemctl enable httpd.service;
-      touch /var/www/html/index.html;
-      echo "<h1>Hello from Multy on ${self.cloud}</h1>" > /var/www/html/index.html
+      sudo su
+      apt update -y && apt install -y apache2
+      systemctl enable apache2
+      touch /var/www/html/index.html
+      echo "<h1>Hello from Multy on aws</h1>" > /var/www/html/index.html
     EOF
   )
+  network_security_group_ids = [multy_network_security_group.nsg.id]
 }
 ``` 
 
@@ -307,15 +311,16 @@ resource "aws_instance" "vm" {
   subnet_id                   = aws_subnet.subnet_aws.id
   user_data_base64           = base64encode(<<-EOF
       #!/bin/bash -xe
-      sudo su;
-      apt update -y && apt install -y httpd.x86_64;
-      systemctl start httpd.service && systemctl enable httpd.service;
-      touch /var/www/html/index.html;
-      echo "<h1>Hello from Multy on AWS</h1>" > /var/www/html/index.html
+      sudo su
+      apt update -y && apt install -y apache2
+      systemctl enable apache2
+      touch /var/www/html/index.html
+      echo "<h1>Hello from Multy on aws</h1>" > /var/www/html/index.html
     EOF
   )
   key_name                    = aws_key_pair.key.key_name
   iam_instance_profile        = aws_iam_instance_profile.profile.id
+  vpc_security_group_ids      = [aws_security_group.nsg.id]
 }
 resource "aws_key_pair" "key" {
   tags     = {
@@ -357,11 +362,11 @@ resource "azurerm_linux_virtual_machine" "vm" {
   network_interface_ids = [azurerm_network_interface.vm.id]
   custom_data           = base64encode(<<-EOF
       #!/bin/bash -xe
-      sudo su;
-      apt update -y && apt install -y httpd.x86_64;
-      systemctl start httpd.service && systemctl enable httpd.service;
-      touch /var/www/html/index.html;
-      echo "<h1>Hello from Multy on Azure</h1>" > /var/www/html/index.html
+      sudo su
+      apt update -y && apt install -y apache2
+      systemctl enable apache2
+      touch /var/www/html/index.html
+      echo "<h1>Hello from Multy on azure</h1>" > /var/www/html/index.html
     EOF
   )
 
@@ -379,8 +384,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "20.04-LTS"
+    offer     = "0001-com-ubuntu-server-focal"
+    sku       = "20_04-LTS"
     version   = "latest"
   }
   identity {
@@ -435,11 +440,11 @@ resource "google_compute_instance" "vm" {
     "ssh-keys"  = file("./ssh_key.pub"),
     "user-data" = base64encode(<<-EOF
       #!/bin/bash -xe
-      sudo su;
-      apt update -y && apt install -y httpd.x86_64;
-      systemctl start httpd.service && systemctl enable httpd.service;
-      touch /var/www/html/index.html;
-      echo "<h1>Hello from Multy on GCP</h1>" > /var/www/html/index.html
+      sudo su
+      apt update -y && apt install -y apache2
+      systemctl enable apache2
+      touch /var/www/html/index.html
+      echo "<h1>Hello from Multy on gcp</h1>" > /var/www/html/index.html
     EOF
     )
   }
@@ -453,6 +458,6 @@ If you want to know more, check out [multy.dev](https://multy.dev?ref=compute-aw
 
 ## Conclusion
 
-Nowadays, cloud providers provide the same core offering when deploying virtual machines. However, there's some unique advantages of each cloud and some differences you need to be careful about if you don't want to end up locked in into a single provider. 
+Nowadays, cloud providers provide the same core offering when deploying virtual machines. However, there's some unique advantages of each cloud and some differences you need to be careful about if you don't want to end up locked in into a single provider. If you want to read more about challenges of building multi cloud, check out our other [blog post](http://multy.dev/blog/challenges-of-building-multi-cloud). 
 
 At [Multy](https://multy.dev?ref=compute-aws-vs-azure-vs-gcp-blog), we're unifying cloud provider resources by providing a single cloud-agnostic API and handling the differences behind the hood. It is available as a Terraform provider, so you can still take advantage of other very cloud-specific resources but keep the majority of your infrastructure portable.
