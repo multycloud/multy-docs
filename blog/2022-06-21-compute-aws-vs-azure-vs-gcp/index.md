@@ -242,6 +242,214 @@ Common features include redundancy, snapshotting, encryption and attaching volum
 
 Aside from those, all clouds also offer a local storage which is usually cheaper, smaller and considered ephemeral.
 
+## What we're doing at Multy
+
+As we've seen so far, while most of the features in each cloud are similar, there's a lot of differences that make it hard to switch clouds. This increases your degree of lock-in to your cloud provider. That's why we are building Multy - an open source tool that enables developers to deploy cloud-agnostic infrastructure.
+
+With Multy, you specify how your resource configuration and what cloud you want to deploy in, and we handle the nuances of each cloud for you. It's currently available as a Terraform provider. 
+
+Let's say we want to deploy a virtual machine with the following configuration:
+
+- Ubuntu 20.04 LTS
+- 1 CPU core, 1 GB Ram
+- Ephemeral public IP
+- SSH configured
+- Located in London
+
+Here's how a Terraform configuration looks like in Multy and in the different cloud providers:
+
+
+<Tabs>
+
+   <TabItem value="multy" label="Multy" default>
+
+```hcl
+resource "multy_virtual_machine" "vm" {
+  cloud    = "aws"
+  location = "eu_west_2"
+
+  name               = "multy-vm"
+  size               = "general_micro"
+  image_reference    = {
+    os      = "ubuntu"
+    version = "20.04"
+  }
+  subnet_id          = multy_subnet.subnet.id
+  generate_public_ip = true
+  public_ssh_key     = file("./ssh_key.pub")
+  user_data_base64   = base64encode(<<-EOF
+      #!/bin/bash -xe
+      sudo su;
+      apt update -y && apt install -y httpd.x86_64;
+      systemctl start httpd.service && systemctl enable httpd.service;
+      touch /var/www/html/index.html;
+      echo "<h1>Hello from Multy on ${self.cloud}</h1>" > /var/www/html/index.html
+    EOF
+  )
+}
+``` 
+
+<small>For a full example, check the <a href="https://docs.multy.dev/examples/public-virtual-machine" target="_blank"> Multy documentation</a>.</small>
+
+ </TabItem>
+
+  <TabItem value="aws" label="AWS">
+
+```hcl
+resource "aws_instance" "vm" {
+  tags     = {
+    "Name" = "test-vm"
+  }
+
+  ami                         = data.aws_ami.ami.id
+  instance_type               = "t2.micro"
+  associate_public_ip_address = true
+  subnet_id                   = aws_subnet.subnet_aws.id
+  user_data_base64           = base64encode(<<-EOF
+      #!/bin/bash -xe
+      sudo su;
+      apt update -y && apt install -y httpd.x86_64;
+      systemctl start httpd.service && systemctl enable httpd.service;
+      touch /var/www/html/index.html;
+      echo "<h1>Hello from Multy on AWS</h1>" > /var/www/html/index.html
+    EOF
+  )
+  key_name                    = aws_key_pair.key.key_name
+  iam_instance_profile        = aws_iam_instance_profile.profile.id
+}
+resource "aws_key_pair" "key" {
+  tags     = {
+    "Name" = "test-key"
+  }
+
+  key_name   = "multy_vm_key"
+  public_key = file("./ssh_key.pub")
+}
+data "aws_ami" "ami" {
+  owners      = ["099720109477"]
+  most_recent = true
+  filter {
+    name   = "name"
+    values = ["ubuntu*-20.04-amd64-server-*"]
+  }
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
+```
+
+  </TabItem>
+  <TabItem value="azure" label="Azure">
+
+```hcl
+resource "azurerm_linux_virtual_machine" "vm" {
+  resource_group_name   = azurerm_resource_group.rg.name
+  name                  = "test-vm"
+  computer_name         = "testvm"
+  location              = "uksouth"
+  size                  = "Standard_B1s"
+  zone                  = "1"
+  network_interface_ids = [azurerm_network_interface.vm.id]
+  custom_data           = base64encode(<<-EOF
+      #!/bin/bash -xe
+      sudo su;
+      apt update -y && apt install -y httpd.x86_64;
+      systemctl start httpd.service && systemctl enable httpd.service;
+      touch /var/www/html/index.html;
+      echo "<h1>Hello from Multy on Azure</h1>" > /var/www/html/index.html
+    EOF
+  )
+
+  os_disk {
+    caching              = "None"
+    storage_account_type = "Standard_LRS"
+  }
+  
+  admin_username = "adminuser"
+
+  admin_ssh_key {
+    username   = "adminuser"
+    public_key = file("./ssh_key.pub")
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "20.04-LTS"
+    version   = "latest"
+  }
+  identity {
+    type = "SystemAssigned"
+  }
+  disable_password_authentication = true
+}
+
+resource "azurerm_network_interface" "vm" {
+  resource_group_name = azurerm_resource_group.rg.name
+  name                = "nic"
+  location            = "uksouth"
+
+  ip_configuration {
+    name                          = "external"
+    private_ip_address_allocation = "Dynamic"
+    subnet_id                     = azurerm_subnet.subnet.id
+    public_ip_address_id          = azurerm_public_ip.pip.id
+    primary                       = true
+  }
+}
+resource "azurerm_public_ip" "pip" {
+  resource_group_name = azurerm_resource_group.rg.name
+  name                = "pip"
+  location            = "uksouth"
+  allocation_method   = "Dynamic"
+}
+
+``` 
+
+ </TabItem>
+
+  <TabItem value="gcp" label="GCP">
+
+```hcl
+resource "google_compute_instance" "vm" {
+  name         = "test-vm"
+  machine_type = "e2-micro"
+  zone         = "europe-west2-b"
+  boot_disk {
+    initialize_params {
+      image = "ubuntu-os-cloud/ubuntu-2004-lts"
+    }
+  }
+  network_interface {
+    subnetwork = google_compute_subnetwork.subnet.self_link
+    access_config {
+      network_tier = "STANDARD"
+    }
+  }
+  metadata = {
+    "ssh-keys"  = file("./ssh_key.pub"),
+    "user-data" = base64encode(<<-EOF
+      #!/bin/bash -xe
+      sudo su;
+      apt update -y && apt install -y httpd.x86_64;
+      systemctl start httpd.service && systemctl enable httpd.service;
+      touch /var/www/html/index.html;
+      echo "<h1>Hello from Multy on GCP</h1>" > /var/www/html/index.html
+    EOF
+    )
+  }
+}
+``` 
+
+ </TabItem>
+</Tabs>
+
+If you want to know more, check out [multy.dev](https://multy.dev?ref=compute-aws-vs-azure-vs-gcp-blog) or take a look at our [repo](https://github.com/multycloud/multy)!
 
 ## Conclusion
 
