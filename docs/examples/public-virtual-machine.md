@@ -30,15 +30,15 @@ resource "multy_virtual_network" "vn" {
   for_each = var.clouds
   cloud    = each.key
 
-  name       = "multy_vn"
+  name       = "multy-vm"
   cidr_block = "10.0.0.0/16"
-  location   = "eu_west_1"
+  location   = "eu_west_2"
 }
 
 resource "multy_subnet" "subnet" {
   for_each = var.clouds
 
-  name               = "multy_subnet"
+  name               = "multy-subnet"
   cidr_block         = "10.0.10.0/24"
   virtual_network_id = multy_virtual_network.vn[each.key].id
 }
@@ -49,7 +49,7 @@ resource "multy_network_security_group" "nsg" {
 
   name               = "multy_nsg"
   virtual_network_id = multy_virtual_network.vn[each.key].id
-  location           = "eu_west_1"
+  location           = "eu_west_2"
   rule {
     protocol   = "tcp"
     priority   = 132
@@ -58,11 +58,19 @@ resource "multy_network_security_group" "nsg" {
     cidr_block = "0.0.0.0/0"
     direction  = "both"
   }
+  rule {
+    protocol   = "tcp"
+    priority   = 131
+    from_port  = 443
+    to_port    = 443
+    cidr_block = "0.0.0.0/0"
+    direction  = "both"
+  }
 }
 
 resource "multy_route_table" "rt" {
   for_each           = var.clouds
-  name               = "web_app_rt"
+  name               = "multy-rt"
   virtual_network_id = multy_virtual_network.vn[each.key].id
   route {
     cidr_block  = "0.0.0.0/0"
@@ -77,29 +85,29 @@ resource "multy_route_table_association" "rta" {
 }
 
 resource "multy_virtual_machine" "vm" {
-  for_each = var.clouds
-  cloud    = each.key
-  location = "eu_west_1"
-
-  name               = "multy_vm"
-  size               = "general_micro"
-  image_reference    = {
-    os      = "cent_os"
-    version = "8.2"
+  for_each        = var.clouds
+  cloud           = each.key
+  location        = "eu_west_2"
+  name            = "test-vm"
+  size            = "general_micro"
+  image_reference = {
+    os      = "ubuntu"
+    version = "20.04"
   }
   subnet_id          = multy_subnet.subnet[each.key].id
   generate_public_ip = true
   user_data_base64   = base64encode(<<-EOF
       #!/bin/bash -xe
-      sudo su;
-      yum update -y && yum install -y httpd.x86_64;
-      systemctl start httpd.service && systemctl enable httpd.service;
-      touch /var/www/html/index.html;
+      sudo su
+      apt update -y && apt install -y apache2
+      systemctl enable apache2
+      touch /var/www/html/index.html
       echo "<h1>Hello from Multy on ${each.key}</h1>" > /var/www/html/index.html
     EOF
   )
+  network_security_group_ids = [multy_network_security_group.nsg[each.key].id]
 
-  depends_on = [multy_network_security_group.nsg]
+  depends_on = [multy_route_table_association.rta1]
 }
 
 output "aws_endpoint" {
