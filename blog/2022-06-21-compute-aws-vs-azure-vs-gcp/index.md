@@ -4,13 +4,13 @@ title: "AWS vs GCP vs Azure - Computing resources"
 authors: [goncalo]
 tags: [iac, terraform, compute, cloud, infrastructure, aws, gcp, azure]
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # AWS vs GCP vs Azure - Computing resources - Virtual Machines
 
-In this blog post series, we will be comparing different services in AWS, GCP and Azure. We'll go into some detail in each of the resources and understand the differences between providers, something you need to be aware if you are looking into switching clouds or building out multi-cloud.
-
+In this blog post series, we will be comparing different services in AWS, GCP and Azure. We'll go into detail in each of the resources and understand the differences between providers, something you need to be aware if you are looking into switching clouds.
 
 There are many computing resources available across all clouds which usually fall into one of these categories:
 
@@ -23,7 +23,7 @@ In this blog post, we're specifically focusing on Virtual Machine instances. If 
 
 ## Overview
 
-Amazon is the market leader on cloud computing resources with their Elastic Compute Cloud (EC2). Google Cloud offers a similar service called Compute Engine and Azure also has Virtual Machines. 
+Amazon is the market leader on cloud computing resources with Elastic Compute Cloud (EC2). Google Cloud offers a similar service called Compute Engine and Azure also has Virtual Machines. 
 
 These services provide a virtualized environment where you can easily launch your applications in a few seconds without having to buy and manage hardware yourself. Since it's so easy to create or destroy new instances, you can add more or remove on-demand depending on your usage, allowing you to scale effortlessly.
 
@@ -60,7 +60,7 @@ In Azure, each virtual machine can have a different availability zone, even if t
 
 
 ### GCP
-In GCP, quite a few resources are [global](https://cloud.google.com/compute/docs/regions-zones/global-regional-zonal-resources), meaning they can be used by other resources in any location across the world. For the case of virtual machines, they are zonal resources, so you need to specify which availability zone you want to deploy your virtual machines in. The underlying virtual network is global, meaning you can have virtual machines in different regions communicating with each other out of the box.
+In GCP, a number of few resources are [global](https://cloud.google.com/compute/docs/regions-zones/global-regional-zonal-resources), meaning they can be used by other resources in any location across the world. For the case of virtual machines, they are zonal resources, so you need to specify which availability zone you want to deploy your virtual machines in. The underlying virtual network is global, meaning you can have virtual machines in different regions communicating with each other out of the box.
 
 <div style={{display: 'block',marginLeft: 'auto',marginRight: 'auto',width: '50%'}}>
 <img src="/img/gcp-vm-diagram.png" alt="drawing" width="400"/>
@@ -71,7 +71,7 @@ In GCP, quite a few resources are [global](https://cloud.google.com/compute/docs
 
 ### Region availability
 
-Sometimes you need to pick a specific region, either for data residency laws, latency or customer requirements. That's when you need to be careful about the clouds you choose - as not all regions are available everywhere. For example, these are some of the regions that are not available in one of the three major cloud providers (as of 06/2022):
+Oftentimes you need a specific region, either for data residency laws, latency or customer requirements. That's when you need to be careful about the clouds you choose - as not all regions are available everywhere. For example, these are some of the regions that are not available in one of the three major cloud providers (as of 06/2022):
 
 | Location       | AWS region           | Azure region                                                | GCP region         | 
 |----------------|----------------------|-------------------------------------------------------------|--------------------|
@@ -148,11 +148,11 @@ Password access is disabled on newly created GCP's Compute Engines and on AWS's 
 
 Aside from direct SSH access, different cloud providers provide different access methods that integrate directly with their Access Management users and policies. 
 
-GCP has OSLogin to  manage SSH access to your instances using IAM without having to create and manage individual SSH keys. 
-
 AWS offers EC2 Instance Connect that  uses AWS Identity and Access Management (IAM) policies and principals to control SSH access to your instances, removing the need to share and manage SSH keys.
 
 In Azure, you can use Azure Active Directory (AD) as a core authentication platform and a certificate authority, to SSH into a Linux VM using Azure AD and openSSH certificate-based authentication.
+
+GCP has OSLogin to  manage SSH access to your instances using IAM without having to create and manage individual SSH keys. 
 
 ## Images
 
@@ -204,6 +204,8 @@ resource "google_compute_instance" "example_vn" {
    <TabItem value="multy" label="Multy">
 
 ```hcl
+# with multy, we abstract the cloud specific parameters away
+# write your user data and chose the destination cloud, multy does the rest
 resource "multy_virtual_machine" "example_vm" {
   ...
   cloud             = "aws"
