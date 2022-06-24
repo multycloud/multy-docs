@@ -1,6 +1,7 @@
 ---
 slug: compute-aws-vs-azure-vs-gcp
 title: "AWS EC2 vs Azure Virtual Machine vs GCP Compute Engine - compute comparison (2022)"
+image: ./compute_clouds.png
 authors: [goncalo]
 tags: [iac, terraform, compute, cloud, infrastructure, aws, gcp, azure, devops]
 ---
@@ -20,8 +21,11 @@ There are many computing resources available across all clouds which usually fal
 - Instances (virtual machines, spot instances)
 - Serverless
 
-In this blog post, we're specifically focusing on Virtual Machine instances. If you are interested in other resources, join our [mailing list](https://multy.dev/#beta?ref=compute-aws-vs-azure-vs-gcp-blog) as we will be comparing other resources in this series.
+In this article, we're specifically focusing on Virtual Machine instances. If you are interested in other resources, join our [mailing list](https://multy.dev/#beta?ref=compute-aws-vs-azure-vs-gcp-blog) as we will be comparing other resources later on.
 
+![virtual_machine_clouds](./compute_clouds.png)
+
+<!--truncate-->
 
 ## Overview
 

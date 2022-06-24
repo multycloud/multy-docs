@@ -11,6 +11,8 @@ Cloud infrastructure has been on the rise for the last decade. As it's adoption 
 
 In this post, we'll go over an overview of what is IaC, why you should consider using it and a brief introduction to how some of these tools work under the hood.
 
+<!--truncate-->
+
 ## What is IaC?
 
 Infrastructure as Code is the practice of provisioning infrastructure in a declarative way, using code. This represents a shift from the imperative paradigm, where you manually deploy each resource, either by going through your cloud provider’s UI or by using a command line interface (CLI) and packaging these commands into bash scripts. 
