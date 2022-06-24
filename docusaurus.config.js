@@ -125,8 +125,8 @@ const config = {
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Multy.`,
-        metadata: [{name: 'twitter:card', content: 'summary'}],
       },
+      metadata: [{name: 'twitter:card', content: 'summary'}],
       colorMode: {
         defaultMode: "light",
         disableSwitch: true,
