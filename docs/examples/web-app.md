@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Web App
 
-This example deploys a three tier web application that is hosted on both AWS and Azure.
+This example deploys a three tier web application that is hosted on AWS, Azure and GCP.
 
 Resources deployed:
 * Virtual network and 3 public subnets
@@ -24,6 +24,7 @@ provider "multy" {
   api_key         = "XXX-YYY-ZZZ"
   aws             = {}
   azure           = {}
+  gcp             = {"project" = "multy-project"}
 }
 
 variable "location" {
@@ -33,7 +34,7 @@ variable "location" {
 
 variable "clouds" {
   type    = set(string)
-  default = ["aws", "azure"]
+  default = ["aws", "azure", "gcp"]
 }
 
 variable "db_cloud" {
@@ -167,7 +168,7 @@ EOT
 resource "multy_virtual_machine" "vm" {
   for_each           = var.clouds
   name               = "web_app_vm"
-  size               = "general_nano"
+  size               = "general_micro"
   image_reference    = {
     os      = "ubuntu"
     version = "18.04"
@@ -210,5 +211,9 @@ output "aws_endpoint" {
 
 output "azure_endpoint" {
   value = "http://${multy_virtual_machine.vm["azure"].public_ip}:4000"
+}
+
+output "gcp_endpoint" {
+  value = "http://${multy_virtual_machine.vm["gcp"].public_ip}:4000"
 }
 ```

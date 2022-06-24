@@ -8,15 +8,15 @@ Below is a breakdown of Multy virtual machine sizes and how they relate to the r
 
 ## General
 
-| Multy           | vCPUs | RAM (GiB) | AWS        | Azure         |
-| --------------- | ----- | --------- | ---------- | ------------- |
-| general_nano    | 1     | 0.5       | t2.nano    | Standard_B1ls |
-| general_micro   | 1     | 1         | t2.micro   | Standard_B1s  |
-| general_small   | 1     | 2         | t2.small   | Standard_B1ms |
-| general_medium  | 2     | 4         | t2.medium  | Standard_B2s  |
-| general_large   | 2     | 8         | t2.large   | Standard_B2ms |
-| general_xlarge  | 4     | 16        | t2.xlarge  | Standard_B4ms |
-| general_2xlarge | 8     | 32        | t2.2xlarge | Standard_B8ms |
+| Multy           | vCPUs | RAM (GiB) | AWS        | Azure         | GCP
+| --------------- | ----- | --------- | ---------- | ------------- | ------------
+| general_nano    | 1     | 0.5       | t2.nano    | Standard_B1ls | -
+| general_micro   | 1     | 1         | t2.micro   | Standard_B1s  | e2-micro
+| general_small   | 1     | 2         | t2.small   | Standard_B1ms | e2-small
+| general_medium  | 2     | 4         | t2.medium  | Standard_B2s  | e2-medium
+| general_large   | 2     | 8         | t2.large   | Standard_B2ms | e2-standard-2
+| general_xlarge  | 4     | 16        | t2.xlarge  | Standard_B4ms | e2-standard-4
+| general_2xlarge | 8     | 32        | t2.2xlarge | Standard_B8ms | e2-standard-8
 
 ## Compute
 

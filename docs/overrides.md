@@ -25,8 +25,8 @@ resource "multy_virtual_machine" "vm" {
   location           = "eu_west_1"
 
   // highlight-start
-  aws = {
-    size = "m4.2xlarge"
+  aws_overrides = {
+    instance_type = "m4.2xlarge"
   }
   // highlight-end
 }
@@ -54,7 +54,7 @@ resource "multy_object_storage" "obj" {
 resource "multy_object_storage_object" "hello_world" {
   name              = "index.html"
   object_storage_id = multy_object_storage.obj.id
-  content           = "<h1>hello world from AWS</h1>"
+  content_base64    = base64encode("<h1>hello world from AWS</h1>")
   content_type      = "text/html"
   acl               = "public_read"
 }

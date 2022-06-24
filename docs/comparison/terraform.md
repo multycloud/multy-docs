@@ -34,7 +34,7 @@ Let's compare the two by looking at a `virtual_network` resource.
 
 ```hcl
 resource "multy_virtual_network" "multy_vn" {
-  name       = "multy_vn"
+  name       = "multy-vn"
   cidr_block = "10.0.0.0/16"
   location   = "eu_west_1"
   cloud      = "aws" # or "azure"
@@ -47,7 +47,7 @@ resource "multy_virtual_network" "multy_vn" {
 ```hcl
 resource "aws_vpc" "aws_vn" {
   tags        = { 
-    "Name" = "multy_vn" 
+    "Name" = "multy-vn"
   }
   cidr_block  = "10.0.0.0/16"
 }
@@ -64,14 +64,26 @@ resource "azurerm_resource_group" "vn-rg" {
 
 resource "azurerm_virtual_network" "azure_vn" {
   resource_group_name = azurerm_resource_group.vn-rg.name
-  name                = "multy_vn"
+  name                = "multy-vn"
   location            = "ukwest"
   address_space       = ["10.0.0.0/16"]
 }
 ```
 
  </TabItem>
+  <TabItem value="gcp" label="Terraform - GCP">
+
+```hcl
+resource "google_compute_network" "gcp_vn" {
+  name                            = "multy-vn"
+  routing_mode                    = "REGIONAL"
+  auto_create_subnetworks         = false
+  delete_default_routes_on_create = true
+}
+```
+
+ </TabItem>
 </Tabs>
 
-While both AWS and Azure are offering the same service, there are differences and nuances in the way they work that make it difficult to easily maintain multiple configurations. With Multy, to move clouds you only need to change the `cloud` parameter to change the underlying provider, everything else stays the same. 
+While AWS, Azure and GCP are offering the same service, there are differences and nuances in the way they work that make it difficult to easily maintain multiple configurations. With Multy, to move clouds you only need to change the `cloud` parameter to change the underlying provider, everything else stays the same. 
 

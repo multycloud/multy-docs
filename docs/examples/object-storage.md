@@ -14,8 +14,10 @@ terraform {
 }
 
 provider "multy" {
-  api_key         = "xxx"
+  api_key         = "XXX-YYY-ZZZ"
+  aws             = {}
   azure           = {}
+  gcp             = {"project" = "multy-project"}
 }
 
 variable "clouds" {
