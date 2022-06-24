@@ -1,6 +1,7 @@
 ---
 slug: why-rest-is-dead
 title: Why we chose gRPC over REST for Multy
+image: ./grpcvrest.png
 authors: [goncalo]
 tags: [grpc, rest, google, api, golang]
 ---

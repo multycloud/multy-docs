@@ -1,6 +1,7 @@
 ---
 slug: challenges-of-building-multi-cloud
 title: The Challenges of Building Multi Cloud
+image: ./multi-cloud.png
 authors: [jcoelho]
 tags: [multi-cloud, aws, azure, gpc, terraform, pulumi]
 ---
