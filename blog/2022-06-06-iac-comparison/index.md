@@ -13,6 +13,8 @@ However, most infrastructures get to a point where manual deployments and resour
 
 In this blog post, we'll take a look at the current IaC landscape, current tools and how they compare against each other.
 
+<!--truncate-->
+
 ## IaC landscape
 
 There are a lot of different IaC tools out there, solving different sets of challenges. Let's take a look at some of the most popular alternatives and what makes them stand out.

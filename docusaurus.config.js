@@ -8,8 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/oceanicNext");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Multy",
-  tagline:
-    "Multy makes it easy for developers to deploy infrastructure to any cloud",
+  tagline: "Multy makes it easy for developers to deploy infrastructure to any cloud",
   url: "https://docs.multy.dev",
   baseUrl: "/",
   onBrokenLinks: "throw",
