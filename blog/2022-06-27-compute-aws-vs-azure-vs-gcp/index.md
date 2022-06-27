@@ -1,6 +1,7 @@
 ---
 slug: compute-aws-vs-azure-vs-gcp
 title: "AWS EC2 vs Azure Virtual Machine vs GCP Compute Engine - compute comparison (2022)"
+description: "AWS, Azure and GCP all offer similar services for virtualized compute instances. However, there's quite a few surprising differences that are important to be aware when choose your provider and building your infrastructure."
 image: ./compute_clouds.png
 authors: [goncalo]
 tags: [iac, terraform, compute, cloud, infrastructure, aws, gcp, azure, devops]
