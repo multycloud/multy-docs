@@ -5,29 +5,29 @@ authors: [dan]
 tags: [cloud,multicloud]
 ---
 
-Multi-cloud strategy – the use of multiple private or public clouds – is increasingly becoming the main method companies use to deploy their IT infrastructure. In the next three years, an estimate 64% of companies will rely on multi-cloud as their main deployment model.  Despite the complexities that come from operationalizing it as we disccussed in [The Challenges of Building Multi Cloud](https://docs.multy.dev/blog/challenges-of-building-multi-cloud/), the multiple benefits that come from this deployment model can often make it worth the effort. So, what makes multi-cloud so attractive?
+Multi-cloud strategy – the use of multiple private or public clouds – is increasingly becoming the main method companies use to deploy their IT infrastructure. In the next three years, an estimate 64% of companies will rely on multi-cloud as their main deployment model [source](https://google.com).  Despite the complexities that come from operationalizing it, as we disccussed in [The Challenges of Building Multi Cloud](https://docs.multy.dev/blog/challenges-of-building-multi-cloud/), the multiple benefits that come from this deployment model can often make it worth the effort. So, what makes multi-cloud so attractive?
 
 <!--truncate-->
 
-### 1 - Avoids Cloud Vendor Lock-in
+### Cloud Vendor Lock-in
 
 Business leaders are concerned about cloud vendor lock-in as it leaves them at the mercy of a single provider and reduces their flexibility to respond to business needs. Vendor lock-in can be detrimental for organizations as it leaves them exposed to massive price hikes ([GCP increases prices up to 50% in some of its services](https://techcrunch.com/2022/03/14/inflation-is-real-google-cloud-raises-its-storage-prices/)), possible declines in the quality of service and changes in product offering that no longer align with the business.   
 
-### 2 - Costs & Credits
+### Costs & Credits
 
-With multi-cloud you can have the option of running your workloads where it's more cost-optimal to do so. Depending on your particular needs, running on one cloud provider or another can make a big difference in terms of costs to your organization. For example, AWS is notoriously more expensive than Azure for data intensive applications. Likewise happens with Windows Server and SQL Server in which AWS can be up to 5 times more expensive than Azure.
+With multi-cloud, you can have the option of running your workloads where it's more cost-optimal to do so. Depending on your particular needs, running on one cloud provider versus another can make a big difference in terms of costs to your organization. For example, AWS is notoriously more expensive than Azure for data intensive applications. The same happens when running Windows Server and SQL Server on AWS, which can be up to 5 times more expensive than Azure [source](https://multy.dev).
 
-### 3 - Business and Compliance Requirements
+### Business and Compliance Requirements
 
-Multi-cloud allows your business to rapidly respond to arising business needs. A customer might require you to run on a particular cloud provider for them to meet their compliance needs. Or you might need to use a particular provider because of data sovereignty requirements (i.e. need to use Azure in Switzerland as AWS doesn’t have a region there). Regardless of the reason, multi-cloud provides the necessary flexibility for companies to rapidly respond to arising needs.
+Multi-cloud allows your business to rapidly respond to arising business needs. A customer might require you to run on a particular cloud provider for them to meet their own compliance needs. Or you might need to use a particular provider because of data sovereignty requirements (i.e. need to use Azure in Switzerland as AWS doesn’t have a region there yet). If you are reactive to these business requirements, you will lose momentum and likely business because you haven't built flexibility. With multi-cloud, you have the necessary flexibility to rapidly respond to any requirements.
 
-### 4 - Resilience & Disaster Recovery
+### Resilience & Disaster Recovery
 
-Businesses are increasingly running business critical applications in the cloud. Thus, to continue having a high degree of resilience, it is becoming mandatory for them to diversify and mitigate the risks they face when using just a single provider. For example, just in December 2021, AWS suffered three outages that lasted for hours taking down several sites and services.  Multi-cloud strategies help businesses improve their resilience by having less reliance on a single cloud provider while also gaining the flexibility of rapidly switching workloads when outages occur.
+Businesses are increasingly running business critical applications in the cloud. Thus, to continue having a high degree of resilience, it is becoming mandatory for them to diversify and mitigate the risks they face when using just a single provider. For example, just in December 2021, AWS suffered three outages that lasted for hours taking down several sites and services [source](https://www.zdnet.com/article/aws-suffers-third-outage-of-the-month/).  Multi-cloud strategies help businesses improve their resilience by having less reliance on a single cloud provider while also gaining the flexibility of rapidly switching workloads when outages occur.
 
-In fact, for some businesses such as financial services operating in EU and UK, regulation (i.e. [Digital Operational Resilience Act – ‘DORA’](https://www.consilium.europa.eu/en/press/press-releases/2022/05/11/digital-finance-provisional-agreement-reached-on-dora/)) will increasingly push businesses to adopt multi-cloud setups to reduce the risk they face by having a high proportion of their workloads tied to a single cloud provider.   
+In fact, for some businesses such as financial services operating in EU and UK, regulation (i.e. [Digital Operational Resilience Act – ‘DORA’](https://www.consilium.europa.eu/en/press/press-releases/2022/05/11/digital-finance-provisional-agreement-reached-on-dora/)) will increasingly push businesses to adopt multi-cloud setups to reduce the risk they face by having a high proportion of their workloads tied to a single cloud provider - Cloud Concentration Risk.   
 
-### 5 - Best-in Class
+### Best-in Class
 
 With multi-cloud companies can leverage the best-in class services to run their workloads. This can help accelerate the cloud transformation of businesses by allowing them to choose the best cloud provider where it really matters. For example, they could be hosting their customer-facing applications on AWS while processing large volumes of data with GCP’s BigQuery.  
 
