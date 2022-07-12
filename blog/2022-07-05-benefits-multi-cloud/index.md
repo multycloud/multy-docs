@@ -5,7 +5,7 @@ authors: [dan]
 tags: [cloud,multicloud]
 ---
 
-Multi-cloud strategy – the use of multiple private or public clouds – is increasingly becoming the main method companies use to deploy their IT infrastructure. In the next three years, an estimate 64% of companies will rely on multi-cloud as their main deployment model [source](https://google.com).  Despite the complexities that come from operationalizing it, as we disccussed in [The Challenges of Building Multi Cloud](https://docs.multy.dev/blog/challenges-of-building-multi-cloud/), the multiple benefits that come from this deployment model can often make it worth the effort. So, what makes multi-cloud so attractive?
+Multi-cloud strategy – the use of multiple private or public clouds – is increasingly becoming the main method companies use to deploy their IT infrastructure. In the next three years, an estimate 64% of companies will rely on multi-cloud as their main deployment model [1]([https://google.com](https://www.nutanix.com/enterprise-cloud-index)).  Despite the complexities that come from operationalizing it, as we disccussed in [The Challenges of Building Multi Cloud](https://docs.multy.dev/blog/challenges-of-building-multi-cloud/), the multiple benefits that come from this deployment model can often make it worth the effort. So, what makes multi-cloud so attractive?
 
 <!--truncate-->
 
