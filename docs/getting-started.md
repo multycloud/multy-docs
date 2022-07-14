@@ -24,12 +24,13 @@ Multy is available as a Terraform provider, so you'll need to install Terraform 
 ### 2. Setup Cloud Provider Account
 
 Multy deploys your infrastructure in a major cloud provider. 
-Currently, you can deploy it in AWS or Azure, with Google Cloud coming soon.
+Currently, you can deploy it in Amazon Web Services (AWS), Azure or Google Cloud Platform (GCP).
 
 You can find how to create an account in each of the cloud provider's websites:
 
 - AWS - https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/
 - Azure - https://azure.microsoft.com/en-gb/free/
+- GCP - https://console.cloud.google.com/getting-started
 
 In order to setup the credentials, you should install AWS and Azure CLIs by following the respective guides:
 - AWS - https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
@@ -210,6 +211,57 @@ This is not a recommended practice as keys could accidentally be shared
 </div>
 </details>
 
+
+#### Generate GCP credentials
+
+Create a new Service Account by following [this tutorial from GCP](https://cloud.google.com/iam/docs/creating-managing-service-accounts) or use an existing one to give Multy access to deploy resources in your behalf.
+After your Service account is created, create a new key and store the resulting JSON in a safe place by following the [docs](https://cloud.google.com/iam/docs/creating-managing-service-account-keys).
+
+You can pass the credentials to Terraform in one of the following ways:
+
+<details className="clean">
+<summary>Environment Variables</summary>
+<div>
+
+Set the environment variable `GOOGLE_APPLICATION_CREDENTIALS` to the path os the JSON file. 
+You can also set `GOOGLE_CREDENTIALS` to the contents of the file instead.
+
+In addition to that, set your default project through the environment variable `GOOGLE_PROJECT`.
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS=~/.google/multy-project-942ae1bdbf0f.json
+export GOOGLE_PROJECT=multy-project
+```
+
+```hcl
+# main.tf
+provider multy {
+  gcp = {}
+}
+```
+
+</div>
+</details>
+
+<details className="clean">
+<summary>Parameters</summary>
+<div>
+
+Pass the path to the key JSON or the contents directly to the provider as a parameter.
+
+```hcl
+provider multy {
+  gcp = {
+    credentials  = "~/.google/multy-project-942ae1bdbf0f.json"
+    project      = "multy-project"
+  }
+}
+```
+
+</div>
+</details>
+
+
 ### 4. Write your infrastructure configuration file
 
 Terraform uses declarative configuration files to deploy your infrastructure. 
@@ -217,7 +269,7 @@ If you're unfamiliar with Terraform, there are a lot of great [tutorials](https:
 Multy provides different resources that can be deployed in any major cloud. 
 Documentation for the different resources is available via the [Terraform provider](https://registry.terraform.io/providers/multycloud/multy/latest/docs).
 
-The following example deploys a simple `object_storage` resource with a *hello world* in both AWS and Azure:
+The following example deploys a simple `object_storage` resource with a *hello world* in AWS, Azure and GCP:
 
 ```hcl
 terraform {
@@ -232,11 +284,12 @@ provider "multy" {
   api_key = "xxx"
   aws     = {}
   azure   = {}
+  gcp     = {}
 }
 
 variable "clouds" {
   type    = set(string)
-  default = ["aws", "azure"]
+  default = ["aws", "azure", "gcp"]
 }
 
 resource "random_string" "suffix" {
@@ -252,7 +305,7 @@ resource "multy_object_storage" "obj_storage" {
   location = "us_east_1"
 }
 
-resource "multy_object_storage_object" "public_obj_storage" {
+resource "multy_object_storage_object" "public_obj" {
   for_each          = var.clouds
   name              = "hello_world"
   object_storage_id = multy_object_storage.obj_storage[each.key].id
@@ -262,11 +315,15 @@ resource "multy_object_storage_object" "public_obj_storage" {
 }
 
 output "aws_object_url" {
-  value = multy_object_storage_object.public_obj_storage["aws"].url
+  value = multy_object_storage_object.public_obj["aws"].url
 }
 
 output "azure_object_url" {
-  value = multy_object_storage_object.public_obj_storage["azure"].url
+  value = multy_object_storage_object.public_obj["azure"].url
+}
+
+output "gcp_object_url" {
+  value = multy_object_storage_object.public_obj["gcp"].url
 }
 ```
 
