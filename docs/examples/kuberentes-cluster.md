@@ -1,10 +1,13 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
 ---
 
-# Public Virtual Machine
+# Kubernetes cluster
 
-Place virtual machine in public subnet with httpd web server.
+This examples creates a managed Kubernetes cluster (EKS/AKS/GKE) in both AWS and GCP. 
+It deploys a node pool that is automatically scaled by the cloud provider up to 3 nodes.  
+
+You can change which clouds to deploy in by changing the `clouds` variable.
 
 ```hcl
 terraform {
@@ -16,15 +19,14 @@ terraform {
 }
 
 provider "multy" {
-  api_key = "XXX-YYY-ZZZ"
+  api_key = "xxx"
   aws     = {}
-  azure   = {}
   gcp     = {"project" = "multy-project"}
 }
 
 variable "clouds" {
   type    = set(string)
-  default = ["aws", "azure"]
+  default = ["aws", "gcp"]
 }
 
 resource "multy_virtual_network" "vn" {
@@ -48,7 +50,7 @@ resource "multy_network_security_group" "nsg" {
   for_each = var.clouds
   cloud    = each.key
 
-  name               = "multy_nsg"
+  name               = "multy-nsg"
   virtual_network_id = multy_virtual_network.vn[each.key].id
   location           = "eu_west_2"
   rule {
@@ -64,14 +66,6 @@ resource "multy_network_security_group" "nsg" {
     priority   = 131
     from_port  = 443
     to_port    = 443
-    cidr_block = "0.0.0.0/0"
-    direction  = "both"
-  }
-  rule {
-    protocol   = "tcp"
-    priority   = 130
-    from_port  = 22
-    to_port    = 22
     cidr_block = "0.0.0.0/0"
     direction  = "both"
   }
@@ -93,39 +87,37 @@ resource "multy_route_table_association" "rta" {
   subnet_id      = multy_subnet.subnet[each.key].id
 }
 
-resource "multy_virtual_machine" "vm" {
-  for_each        = var.clouds
-  cloud           = each.key
-  location        = "eu_west_2"
-  name            = "test-vm"
-  size            = "general_micro"
-  image_reference = {
-    os      = "ubuntu"
-    version = "20.04"
+resource "multy_kubernetes_cluster" "cluster1" {
+  for_each           = var.clouds
+  cloud              = each.key
+  location           = "eu_west_2"
+  name               = "multy-cluster1"
+  virtual_network_id = multy_virtual_network.vn[each.key].id
+
+  default_node_pool = {
+    name                = "default"
+    starting_node_count = 1
+    min_node_count      = 1
+    max_node_count      = 3
+    vm_size             = "general_medium"
+    disk_size_gb        = 10
+    subnet_id           = multy_subnet.subnet[each.key].id
+    availability_zones  = [1]
   }
-  subnet_id          = multy_subnet.subnet[each.key].id
-#  Specify an ssh key by uncommenting the following line:  
-#  public_ssh_key     = file("~/.ssh/id_rsa.pub")
-  generate_public_ip = true
-  user_data_base64   = base64encode(<<-EOF
-      #!/bin/bash -xe
-      sudo su
-      apt update -y && apt install -y apache2
-      systemctl enable apache2
-      touch /var/www/html/index.html
-      echo "<h1>Hello from Multy on ${each.key}</h1>" > /var/www/html/index.html
-    EOF
-  )
-  network_security_group_ids = [multy_network_security_group.nsg[each.key].id]
-
-  depends_on = [multy_route_table_association.rta]
+  
+  depends_on              = [multy_route_table_association.rta]
 }
 
-output "aws_endpoint" {
-  value = multy_virtual_machine.vm["aws"].public_ip
+resource "local_sensitive_file" "kubectl" {
+  for_each = var.clouds
+  filename = pathexpand(length(var.clouds) > 1? "~/.kube/config-${each.key}": "~/.kube/config")
+  content = multy_kubernetes_cluster.cluster1[each.key].kube_config_raw
 }
+```
 
-output "azure_endpoint" {
-  value = multy_virtual_machine.vm["azure"].public_ip
-}
+After deployment, you can interact with the clusters by running `kubectl` with the right kube config. For example:
+
+```bash
+kubectl --kubeconfig=$HOME/.kube/config-AWS get nodes
+kubectl --kubeconfig=$HOME/.kube/config-GCP get nodes
 ```
