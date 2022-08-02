@@ -31,11 +31,11 @@ Below is a breakdown of Multy virtual machine sizes and how they relate to the r
 ## Memory
 
 | Multy           | vCPUs (AWS / Azure) | RAM (GiB) | AWS          | Azure            |
-| --------------- | ------------------- | --------- | ------------ | ---------------- |
-| memory_large    | 2                   | 16        | r6g.large    | Standard_E2s_v3  |
-| memory_xlarge   | 4                   | 32        | r6g.xlarge   | Standard_E4s_v3  |
-| memory_2xlarge  | 8                   | 64        | r6g.2xlarge  | Standard_E8s_v3  |
-| memory_4xlarge  | 16                  | 128       | r6g.4xlarge  | Standard_E16s_v3 |
-| memory_8xlarge  | 32                  | 256       | r6g.8xlarge  | Standard_E32s_v3 |
-| memory_12xlarge | 42 / 48             | 384       | r6g.12xlarge | Standard_E48s_v3 |
-| memory_16xlarge | 64                  | 512       | r6g.16xlarge | Standard_E64a_v4 |
+| --------------- | ------------------- | --------- | ------------ |------------------|
+| memory_large    | 2                   | 16        | r6i.large    | Standard_E2s_v5  |
+| memory_xlarge   | 4                   | 32        | r6i.xlarge   | Standard_E4s_v5  |
+| memory_2xlarge  | 8                   | 64        | r6i.2xlarge  | Standard_E8s_v5  |
+| memory_4xlarge  | 16                  | 128       | r6i.4xlarge  | Standard_E16s_v5 |
+| memory_8xlarge  | 32                  | 256       | r6i.8xlarge  | Standard_E32s_v5 |
+| memory_12xlarge | 42 / 48             | 384       | r6i.12xlarge | Standard_E48s_v5 |
+| memory_16xlarge | 64                  | 512       | r6i.16xlarge | Standard_E64s_v5 |
