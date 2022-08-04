@@ -46,31 +46,6 @@ resource "multy_subnet" "subnet" {
   virtual_network_id = multy_virtual_network.vn[each.key].id
 }
 
-resource "multy_network_security_group" "nsg" {
-  for_each = var.clouds
-  cloud    = each.key
-
-  name               = "multy-nsg"
-  virtual_network_id = multy_virtual_network.vn[each.key].id
-  location           = "eu_west_2"
-  rule {
-    protocol   = "tcp"
-    priority   = 132
-    from_port  = 80
-    to_port    = 80
-    cidr_block = "0.0.0.0/0"
-    direction  = "both"
-  }
-  rule {
-    protocol   = "tcp"
-    priority   = 131
-    from_port  = 443
-    to_port    = 443
-    cidr_block = "0.0.0.0/0"
-    direction  = "both"
-  }
-}
-
 resource "multy_route_table" "rt" {
   for_each           = var.clouds
   name               = "multy-rt"
