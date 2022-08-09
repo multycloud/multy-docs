@@ -19,8 +19,6 @@ Cloud computing can bring many benefits to financial services companies such as 
 
 [Financial regulators are becoming increasingly worried](https://www.ft.com/content/29405a47-586b-4c5a-b641-0f479b4cee1d) of the implications the increased adoption of cloud can have as more and more financial services companies are gradually becoming more reliant on Cloud Service Providers (“CSP”). With the dominance of the space by Amazon, Microsoft and Google, the failure of any one of them could prove a single point of failure for a big portion of the financial system. Consequently, regulators have proposed regulation that aims to lower the systemic risk this dependance introduces into the system. This involves everything from doing proper due diligence and risk assessments of the CSPs to having architectures and plans in place that reduce operational risk and increase resilience.
 
-<br/>
-
 <!--truncate-->
 
 ### Regulation in the EU and UK
@@ -39,9 +37,9 @@ The Digital Operation Resilience Act (“DORA”), first published in 2020, is e
 
 Although regulation has reasonably shied away from becoming too prescriptive in how financial services companies run their operations and architect in the cloud, it has become more and more demanding in terms of requirements companies need to comply with. Initially, the regulation didn’t lead to having organizations use a multi-cloud or hybrid-cloud setup, just with having multi-region or multi-availability zone architecture was enough to have the “required” resilience. However, with regulation now including topics such as concentration risk to a single CSP (i.e. [DORA – Chapter V article 26]( https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A52020PC0595#:~:text=1094/2010%2C%20respectively.-,Article%2026,-Preliminary%20assessment%20of)), substitutability/portability (i.e. [SS2/21 – Section 10](https://www.prevalent.net/compliance/pra-ss2-21/#:~:text=10%20Business%20continuity%20and%20exit%20plans)) and robust exit strategies (i.e. [DORA – Chapter V article 25.9](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A52020PC0595#:~:text=9.-,Financial%20entities,-shall%20put%20in)), a multi-cloud or hybrid-cloud architecture now appears to be the future.
 Here a more detailed view on these concepts:
-- Concentration Risk: Regulation wants financial services companies to assess, when contracting with an ICT third party, how dependent they would become such that the unavailability, failure or shortfall of service of the provider can endanger the ability of the financial entity to deliver its critical functions or suffer adverse effects.
-- Substitutability: The ability, if necessary or desirable, to transfer the proposed cloud outsourcing arrangement to another CSP or reintegrate the services in other ways possible (e.g. on premise).
-- Exit Strategies: Financial service companies need to ensure that they can exit their contractual arrangements (e.g. exit their current public cloud) without having disruptions to their services, limiting their compliance with regulatory requirements, or damage their business continuity and the quality of their service to customers.
+- **Concentration Risk:** Regulation wants financial services companies to assess, when contracting with an ICT third party, how dependent they would become such that the unavailability, failure or shortfall of service of the provider can endanger the ability of the financial entity to deliver its critical functions or suffer adverse effects.
+- **Substitutability:** The ability, if necessary or desirable, to transfer the proposed cloud outsourcing arrangement to another CSP or reintegrate the services in other ways possible (e.g. on premise).
+- **Exit Strategies:** Financial service companies need to ensure that they can exit their contractual arrangements (e.g. exit their current public cloud) without having disruptions to their services, limiting their compliance with regulatory requirements, or damage their business continuity and the quality of their service to customers.
 
 These concepts combined indicate that financial institutions need to plan ahead and build in a way that provides them with the flexibility to fail over safely to another CSP and be able to move from one cloud provider to another without business disruption when needed.
 
