@@ -9,7 +9,7 @@ tags: [cloud,multicloud,regulation,financial services]
 
 <div style={{display: 'block',marginLeft: 'auto',marginRight: 'auto',width: '70%'}}>
 
-![gRPC vs REST](./multi-cloud.png)
+![On Cloud Regulation & Financial Services](./multi-cloud.png)
 
 </div>
 
