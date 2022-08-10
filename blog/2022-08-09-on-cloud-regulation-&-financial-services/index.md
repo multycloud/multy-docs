@@ -45,4 +45,5 @@ These concepts combined indicate that financial institutions need to plan ahead 
 
 ### Summary
 Regulation of the use of cloud by financial institutions and increased scrutiny by regulators are here to stay. With the final draft of the EU Digital Operational Resilience Act (“DORA”) to be released towards the end of 2022 and the UK Prudential Regulation Authority increasing its level of scrutiny, financial institutions need to move towards having less reliance on a single CSP.
+
 Yet, this can be a very challenging task as building for multiple clouds is not an easy process. At Multy, we are helping solve this challenge by offering an open-source tool that makes it easy to run on any cloud. To learn more about Multy or be kept up to date: https://multy.dev To continue the discussion, join our [Discord channel](https://discord.gg/QfPb4EqNs2).    
