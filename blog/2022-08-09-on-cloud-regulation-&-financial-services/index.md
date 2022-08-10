@@ -1,6 +1,6 @@
 ---
 slug: cloud-regulation-&-financial-services
-title: "On cloud regulation, financial services & multi-cloud"
+title: "The regulation driving multi-cloud adoption"
 image: ./multi-cloud.png
 authors: [dan]
 tags: [cloud,multicloud,regulation,financial services]
