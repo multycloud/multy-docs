@@ -5,6 +5,10 @@ image: ./multi-cloud.png
 authors: [dan]
 tags: [cloud,multicloud,regulation,financial services]
 ---
+Cloud computing can bring many benefits to financial services companies such as increased speed and agility, easier innovation and scalability. It is no wonder then that cloud adoption is set to continue increasing with [54% of financial services companies](https://www.mckinsey.com/business-functions/mckinsey-digital/our-insights/three-big-moves-that-can-decide-a-financial-institutions-future-in-the-cloud) expected to have more than half of their entire IT footprint in public clouds in the next five years. However, despite the benefits that this can bring for financial services, it also brings a new set of challenges for financial market stability.
+
+[Financial regulators are becoming increasingly worried](https://www.ft.com/content/29405a47-586b-4c5a-b641-0f479b4cee1d) of the implications the increased adoption of cloud can have as more and more financial services companies are gradually becoming more reliant on Cloud Service Providers (“CSP”). With the dominance of the space by Amazon, Microsoft and Google, the failure of any one of them could prove a single point of failure for a big portion of the financial system. Consequently, regulators have proposed regulation that aims to lower the systemic risk this dependance introduces into the system. This involves everything from doing proper due diligence and risk assessments of the CSPs to having architectures and plans in place that reduce operational risk and increase resilience.
+
 <div class="text--center" >
 
 <div style={{display: 'block',marginLeft: 'auto',marginRight: 'auto',width: '70%'}}>
@@ -14,10 +18,6 @@ tags: [cloud,multicloud,regulation,financial services]
 </div>
 
 </div>
-
-Cloud computing can bring many benefits to financial services companies such as increased speed and agility, easier innovation and scalability. It is no wonder then that cloud adoption is set to continue increasing with [54% of financial services companies](https://www.mckinsey.com/business-functions/mckinsey-digital/our-insights/three-big-moves-that-can-decide-a-financial-institutions-future-in-the-cloud) expected to have more than half of their entire IT footprint in public clouds in the next five years. However, despite the benefits that this can bring for financial services, it also brings a new set of challenges for financial market stability.
-
-[Financial regulators are becoming increasingly worried](https://www.ft.com/content/29405a47-586b-4c5a-b641-0f479b4cee1d) of the implications the increased adoption of cloud can have as more and more financial services companies are gradually becoming more reliant on Cloud Service Providers (“CSP”). With the dominance of the space by Amazon, Microsoft and Google, the failure of any one of them could prove a single point of failure for a big portion of the financial system. Consequently, regulators have proposed regulation that aims to lower the systemic risk this dependance introduces into the system. This involves everything from doing proper due diligence and risk assessments of the CSPs to having architectures and plans in place that reduce operational risk and increase resilience.
 
 <!--truncate-->
 
