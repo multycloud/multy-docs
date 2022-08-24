@@ -8,7 +8,8 @@ const darkCodeTheme = require("prism-react-renderer/themes/oceanicNext");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Multy",
-  tagline: "Multy makes it easy for developers to deploy infrastructure to any cloud",
+  tagline:
+    "Multy makes it easy for developers to deploy infrastructure to any cloud",
   url: "https://docs.multy.dev",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -39,6 +40,8 @@ const config = {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl: "https://github.com/multycloud/multy-docs/tree/main",
+          blogSidebarTitle: "All posts",
+          blogSidebarCount: "ALL",
         },
         theme: {
           customCss: [
@@ -129,7 +132,7 @@ const config = {
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Multy.`,
       },
-      metadata: [{name: 'twitter:card', content: 'summary'}],
+      metadata: [{ name: "twitter:card", content: "summary" }],
       colorMode: {
         defaultMode: "light",
         disableSwitch: true,

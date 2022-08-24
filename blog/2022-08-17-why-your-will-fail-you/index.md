@@ -42,17 +42,13 @@ Alongside outages, you also need to consider other forms of unavailability.
 
 Over the last several months, Azure has been suffering from supply chain issues that led [core services to be unavailable](https://www.theregister.com/2022/07/04/azure_capacity_issues/). Virtual Machines and CosmosDB across the UK regions have not beeen available for deployment, with customer support recommending moving the infrastructure to another region entirely.
 
-Region not available?
-
-## Pricing?
-
-## Conclusion
+## Summary
 
 At the end of the day, each business has to assess their tolerance to downtime (RTO) and data resilience (RPO). While some are willing to tolerate outages interruptions of service, others require near 100% availability with respect to uptime and data loss. Depending on the requirements, businesses should consider:
 
 - **Single Region**: Understand the potential risks that come with building in a single provider/region and accept that the solution is not worth the investment.
 - **Multi Region**: Building resilient infrastructure can help minimise some of the risks that come from failures in a single data center.
-- **Multi Cloud**: Building in multiple clouds means that you can overcome the failures from one cloud by failing over to another provider. 
+- **Multi Cloud**: Building in multiple clouds means that you can overcome the failures from one cloud by failing over to another provider. Read more about this shift in our [Why Companies Are Increasingly Going Multi-Cloud](http://localhost:3000/blog/benefits-of-multicloud) post.
 
 Governments are realising the risks of being reliant on a single cloud provider and introducing legislation focused on ensuring that businesses have the necessary plans in place for proper resilience. Read our blog post on [cloud regulation](https://docs.multy.dev/blog/cloud-regulation-&-financial-services) to learn more.
 
