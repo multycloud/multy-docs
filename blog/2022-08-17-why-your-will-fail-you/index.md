@@ -40,7 +40,9 @@ When operating at such scale, outages are an inevitability. As a business, it's 
 
 Alongside outages, you also need to consider other forms of unavailability.
 
-Over the last several months, Azure has been suffering from supply chain issues that led [core services to be unavailable](https://www.theregister.com/2022/07/04/azure_capacity_issues/). Virtual Machines and CosmosDB across the UK regions have not beeen available for deployment, with customer support recommending moving the infrastructure to another region entirely.
+Cloud providers build regions based on demand. They are a massive capital investment that takes time to be operational. This means that you might be surprised to learn that a region is not available where you need it. This is especially prevalent when it comes to data residency laws. For instance, Switzerland is know for having very strict data privacy laws, meaning data often has to stay in the country. If you're an AWS customer, you might be surprised to learn that there is no region, meaning you might not be able to support customers there. 
+
+Even if the region is exists, you then also need to ensure that the resources within that region are available. Over the last several months, Azure has been suffering from supply chain issues that led [core services to be unavailable](https://www.theregister.com/2022/07/04/azure_capacity_issues/). Virtual Machines and CosmosDB across the UK regions have not been available for deployment, with customer support recommending moving the infrastructure to another region entirely.
 
 ## Summary
 
