@@ -29,8 +29,8 @@ In-depth knowledge of Terraform and Multy is not needed to follow this tutorial.
 This web app will contain the following components:
 
 - Networking - a virtual network that can be accessed from the internet with the appropriate security group
-- Database - a managed mysql database where data will be stored 
-- Virtual machine - a server configured to serve a sample notes app that stores and retrieves data from the database
+- Database - a managed MySQL database where data will be stored 
+- Virtual machine - a server configured to serve a simple notes app that stores and retrieves data from the database
 
 
 <div class="text--center">
@@ -46,7 +46,10 @@ This web app will contain the following components:
 ## Initializing Terraform
 
 First, initialize terraform. 
-Here we'll set up the Multy provider and pass along any needed credentials. Additionally, we'll declare 2 variables, `cloud` and `location`, that make it easy to redeploy the web app in different clouds and locations. You'll need to generate some cloud credentials if you don't have them already - check out the [Getting Started](https://docs.multy.dev/getting-started) guide.
+Here we'll set up the Multy provider and pass along any needed credentials.
+Note that a Multy API key is needed - you can get it for free at https://multy.dev/#beta.
+
+Additionally, we'll declare 2 variables, `cloud` and `location`, that make it easy to redeploy the web app in different clouds and locations. You'll need to generate some cloud credentials if you don't have them already - check out the [Getting Started](https://docs.multy.dev/getting-started) guide.
 
 
 To set up the providers, open a `providers.tf` file with the following content:
@@ -61,7 +64,6 @@ terraform {
 }
 
 provider "multy" {
-  # get a free api key at https://multy.dev/#beta
   api_key = "xxx"
   aws     = {}
 }
@@ -171,7 +173,7 @@ resource "multy_route_table_association" "rta" {
 
 ## Configuring database
 
-Next up, we need to configure our database. We want a small mysql database with a random password in the same location where we placed our virtual network.
+Next up, we need to configure our database. We want a small MySQL database with a random password in the same location where we placed our virtual network.
 
 ```hcl
 resource "random_password" "password" {
