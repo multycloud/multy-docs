@@ -1,6 +1,7 @@
 ---
 slug: web-app-demo
 title: "Deploying a Web App in any cloud using Terraform and Multy"
+image: ./aws_web_app.png
 description: "In this tutorial, we will write infrastructure code in Terraform that deploys a web app in any cloud using cloud-agnostic primitives offered by Multy."
 authors: [goncalo]
 tags: [iac, terraform, demo, cloud, infrastructure, tutorial, devops]
@@ -20,6 +21,9 @@ Usually Terraform configurations are cloud-specific, and changing clouds require
 
 In-depth knowledge of Terraform and Multy is not needed to follow this tutorial. If you want to learn more about these tools, check out the [Multy documentation](https://docs.multy.dev/introduction) and the [Terraform documentation](https://www.terraform.io/docs). 
 
+<!--truncate-->
+
+
 ## Architecture
 
 This web app will contain the following components:
@@ -27,6 +31,17 @@ This web app will contain the following components:
 - Networking - a virtual network that can be accessed from the internet with the appropriate security group
 - Database - a managed mysql database where data will be stored 
 - Virtual machine - a server configured to serve a sample notes app that stores and retrieves data from the database
+
+
+<div class="text--center">
+
+<div style={{display: 'block',marginLeft: 'auto',marginRight: 'auto',width: '70%'}}>
+
+![architecture_diagram](./aws_web_app.png)
+
+</div>
+
+</div>
 
 ## Initializing Terraform
 
@@ -77,7 +92,7 @@ In order for the web app to be accessible from outside the cloud, we'll need to 
 
 We need:
 - A virtual network and a subnet
-- A security group that opens up port 22 (for SSH access) and port 80 (so that the website is accessible)
+- A security group that opens up port 22 (for SSH access) and port 4000 (so that the website is accessible) as well as HTTP and HTTPS access to download the code and linux packages
 - A route table that routes all traffic to the Internet
 
 While this is quite different in each cloud, with Multy we can describe it in a cloud-agnostic manner:
