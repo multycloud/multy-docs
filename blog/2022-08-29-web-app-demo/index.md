@@ -45,7 +45,7 @@ This web app will contain the following components:
 
 ## Initializing Terraform
 
-First, initialize terraform. 
+First, initialize Terraform. 
 Here we'll set up the Multy provider and pass along any needed credentials.
 Note that a Multy API key is needed - you can get it for free at https://multy.dev/#beta.
 
@@ -254,7 +254,7 @@ output "endpoint" {
 
 ## Deploying
 
-After you have everything written, you can deploy the resources using terraform. Run the following command, using the cloud and [location](https://docs.multy.dev/regions) you prefer:
+After you have everything written, you can deploy the resources using Terraform. Run the following command, using the cloud and [location](https://docs.multy.dev/regions) you prefer:
 
 ```bash
 terraform apply -var="cloud=aws" -var="location=eu_west_1"
@@ -264,4 +264,4 @@ After a few minutes, you should see an endpoint where you can access the example
 
 ## Summary
 
-Terraform is a very powerful tool that makes deployments repeatable using a single unified language (HCL) for any cloud. However, clouds are quite different from each other which means Terraform files look very different from cloud to cloud. In this tutorial we looked at an example on how to leverage Multy to make deployments portable across multiple cloud providers. If you want to explore other examples further, take a look at [Multy examples](https://docs.multy.dev/examples/). 
+Terraform is a very powerful tool that makes deployments repeatable using a single unified language (HCL) for any cloud. However, clouds are quite different from each other which means Terraform files look very different from cloud to cloud. In this tutorial we looked at an example on how to leverage Multy to make deployments portable across multiple cloud providers - by just changing a single `cloud` parameter. If you want to explore other examples further, take a look at [Multy examples](https://docs.multy.dev/examples/). 
