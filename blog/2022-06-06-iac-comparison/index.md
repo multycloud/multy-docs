@@ -13,6 +13,8 @@ However, most infrastructures get to a point where manual deployments and resour
 
 In this blog post, we'll take a look at the current IaC landscape, current tools and how they compare against each other.
 
+![2022-06-06-iac-comparison](./TF-vs-Pullumi-vs-TF.png)
+
 <!--truncate-->
 
 ## IaC landscape
