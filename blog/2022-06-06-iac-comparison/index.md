@@ -2,6 +2,8 @@
 slug: iac-comparison
 title: "Terraform vs Pulumi vs CloudFormation: Best Choice for 2022"
 authors: [jcoelho]
+image: .TF-vs-Pullumi-vs-TF.png
+description: "Take a look at the current IaC landscape, current tools and how they compare against each other."
 tags: [iac, aws, terraform, pulumi, cloudformation]
 ---
 
