@@ -3,7 +3,6 @@ slug: benefits-of-multicloud
 title: "Why Companies Are Increasingly Going Multi-Cloud"
 image: ./multi-cloud.png
 authors: [dan]
-twitter-image: ./multi-cloud.png
 tags: [cloud,multicloud]
 ---
 
